@@ -1,2 +1,2 @@
-# centralized-logs
-Centralized logs for MaprR
+# centralized-logging
+Centralized logging for MaprR
