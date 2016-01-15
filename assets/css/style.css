@@ -5,11 +5,16 @@ html {
 
 nav{
     background-color: #2c3e50;
+    margin-bottom: 2%;
 }
 
 .orange{
     background-color:#e67e22 !important;
 }     
+
+.title{
+    margin-bottom: 2%;
+}
 
 footer{
     position: absolute;
@@ -37,4 +42,42 @@ nav ul a:hover{
 
 a.active{
      color : #e67e22 !important;
+}
+
+.label{
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.table-apps{
+    font-size : 15px;
+    color : #757575 ;
+}
+
+table.striped > tbody > tr:hover{
+    cursor:pointer;
+    background-color: rgba(129,208,177,.3);
+}
+
+.table-apps td{
+    padding: 10px 10px;
+}
+
+.table-apps th{
+    border-radius: 0;
+    padding : 15px 10px;
+    color : white;
+    background-color:#2c3e50;
 }
