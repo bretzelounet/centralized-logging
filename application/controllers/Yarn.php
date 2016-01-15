@@ -26,15 +26,20 @@ class Yarn extends CI_Controller {
         $this->load->library('pagination');
     }
     
-	public function index($nb=0)
+	public function index($position=0)
 	{
+        /* number of jobs per page */
+        $per_page = 10;
+        
         $data["file_content"] = $this->file_model->get_file_content();
         $data["apps"] = $this->file_model->get_applications();
         $data["nb_apps"] = count($this->file_model->get_applications());
+        $data["position"] = $position;
+        $data["per_page"] = $per_page;
         
-        $config['base_url'] = base_url("/index.php/yarn");;
-        $config['total_rows'] = 200;
-        $config['per_page'] = 20;
+        $config['base_url'] = base_url("/yarn/index");;
+        $config['total_rows'] = count($this->file_model->get_applications());
+        $config['per_page'] = $per_page;
 
         $this->pagination->initialize($config);
 

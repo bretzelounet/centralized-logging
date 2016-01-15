@@ -29,7 +29,7 @@
 
         <tbody>
         <?php 
-        for($i=0 ; $i < $nb_apps ; $i++)
+        for($i=$position ; $i < ($position+$per_page) ; $i++)
         {
     
         /* Time calculation */
