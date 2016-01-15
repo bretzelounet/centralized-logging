@@ -26,7 +26,7 @@ class Yarn extends CI_Controller {
         $this->load->library('pagination');
     }
     
-	public function index($position=0)
+	public function index($page=1)
 	{
         /* number of jobs per page */
         $per_page = 10;
@@ -34,16 +34,37 @@ class Yarn extends CI_Controller {
         $data["file_content"] = $this->file_model->get_file_content();
         $data["apps"] = $this->file_model->get_applications();
         $data["nb_apps"] = count($this->file_model->get_applications());
-        $data["position"] = $position;
+        $data["position"] = ($page*$per_page)-10;
         $data["per_page"] = $per_page;
         
+        /* pagination configuration */
         $config['base_url'] = base_url("/yarn/index");;
         $config['total_rows'] = count($this->file_model->get_applications());
         $config['per_page'] = $per_page;
+        $config['use_page_numbers'] = TRUE;
+        $config['cur_tag_open'] = '<li class="active">';
+        $config['cur_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li class="waves-effect">';
+        $config['num_tag_close'] = '</li>';
+        $config['next_link'] = '<i class="material-icons">chevron_right</i>';
+        $config['next_tag_open'] = '<li class="waves-effect">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_link'] = '<i class="material-icons">chevron_left</i>';
+        $config['prev_tag_open'] = '<li class="waves-effect">';
+        $config['prev_tag_close'] = '</li>';
+        
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="waves-effect">';
+        $config['last_tag_close'] = '</li>';
+        
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="waves-effect">';
+        $config['first_tag_close'] = '</li>';
+
 
         $this->pagination->initialize($config);
 
-        echo $this->pagination->create_links();
+        $data["pagination"] = $this->pagination->create_links();
         
         $this->load->view('header');
         $this->load->view('yarn', $data);
