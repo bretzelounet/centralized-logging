@@ -12,6 +12,11 @@ nav{
     max-width: 1500px;
 }
 
+.main-container{
+    height:67vh;
+    overflow-y: scroll;
+}
+
 .orange{
     background-color:#e67e22 !important;
 }     
@@ -89,7 +94,7 @@ table.striped > tbody > tr:hover{
 }
 
 .section{
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 .pagination li.active {

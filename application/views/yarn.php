@@ -13,22 +13,24 @@
 <div class="section">
     <div class="container">
         <h4 class="orange-text title">Yarn applications</h4>
-        <table class="striped table-apps responsive-table">
-            <thead>
-                <tr>
-                    <th data-field="id">Job ID</th>
-                    <th data-field="user">User</th>
-                    <th data-field="name">Name</th>
-                    <th data-field="queue">Queue</th>
-                    <th data-field="started">Started</th>
-                    <th data-field="finished">Finished</th>
-                    <th data-field="duration">Duration</th>
-                    <th data-field="status">Status</th>
-                </tr>
-            </thead>
 
-            <tbody>
-                <?php 
+        <div class="main-container">
+            <table class="striped table-apps">
+                <thead>
+                    <tr>
+                        <th data-field="id">Job ID</th>
+                        <th data-field="user">User</th>
+                        <th data-field="name">Name</th>
+                        <th data-field="queue">Queue</th>
+                        <th data-field="started">Started</th>
+                        <th data-field="finished">Finished</th>
+                        <th data-field="duration">Duration</th>
+                        <th data-field="status">Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php 
                 $page = $position + $per_page;
                 if($page > $nb_apps){
                     $page = $nb_apps;
@@ -43,44 +45,44 @@
         $end->setTimezone(new DateTimeZone('Europe/Paris'));
         $duration = $start->diff($end);
         ?>
-                    <tr>
-                        <td>
-                            <?php echo substr($apps[$i]["id"],4); ?>
-                        </td>
-                        <td>
-                            <?php echo $apps[$i]["user"]; ?>
-                        </td>
-                        <td>
-                            <?php echo $apps[$i]["name"]; ?>
-                        </td>
-                        <td>
-                            <?php echo $apps[$i]["queue"]; ?>
-                        </td>
-                        <td>
-                            <?php echo $start->format('D H:i:s'); ?>
-                        </td>
-                        <td>
-                            <?php echo $end->format('D H:i:s'); ?>
-                        </td>
-                        <td>
-                            <?php echo $duration->format('%H:%M:%S'); ?>
-                        </td>
-                        <?php if($apps[$i]["state"]=="SUCCEEDED"){
+                        <tr>
+                            <td>
+                                <?php echo substr($apps[$i]["id"],4); ?>
+                            </td>
+                            <td>
+                                <?php echo $apps[$i]["user"]; ?>
+                            </td>
+                            <td>
+                                <?php echo $apps[$i]["name"]; ?>
+                            </td>
+                            <td>
+                                <?php echo $apps[$i]["queue"]; ?>
+                            </td>
+                            <td>
+                                <?php echo $start->format('D H:i:s'); ?>
+                            </td>
+                            <td>
+                                <?php echo $end->format('D H:i:s'); ?>
+                            </td>
+                            <td>
+                                <?php echo $duration->format('%H:%M:%S'); ?>
+                            </td>
+                            <?php if($apps[$i]["state"]=="SUCCEEDED"){
             ?>
-                            <td><span class="label green"><?php echo $apps[$i]["state"]; ?></span></td>
-                            <?php
+                                <td><span class="label green"><?php echo $apps[$i]["state"]; ?></span></td>
+                                <?php
             }else{
             ?>
-                                <td><span class="label red"><?php echo $apps[$i]["state"]; ?></span></td>
-                                <?php
+                                    <td><span class="label red"><?php echo $apps[$i]["state"]; ?></span></td>
+                                    <?php
             }
             ?>
-                    </tr>
-                    <?php } 
+                        </tr>
+                        <?php } 
         ?>
-            </tbody>
-        </table>
-
+                </tbody>
+            </table>
+        </div>
         <ul class="pagination">
             <?php echo $pagination;?>
         </ul>
