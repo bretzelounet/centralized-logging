@@ -1,4 +1,4 @@
-# Centralized_logging
+# Centralized logging
 Centralized logging for MaprR
 
 # Main stack
