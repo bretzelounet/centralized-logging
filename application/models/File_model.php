@@ -17,16 +17,8 @@ class File_model extends CI_Model {
     
         public function get_applications()
         {
-            $output = shell_exec('C:\"Program Files (x86)"\Gow\bin\ls.exe D:/test');
-            $users = explode("\n", $output);
-            array_pop($users);
-            
-            $apps=[];
-            foreach($users as $u){
-                $cmd = 'C:\"Program Files (x86)"\Gow\bin\ls.exe D:/test/'.$u;
-                array_push($apps,str_replace("\n","",shell_exec($cmd)));
-            }
-            var_dump($apps);
+           $jobs = json_decode(file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs'),true);
+           var_dump(end($jobs["jobs"]["job"]));
             
         }
 
