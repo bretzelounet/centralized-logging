@@ -45,6 +45,7 @@ a.active{
 }
 
 .label{
+    width : 100%;
     text-decoration: none;
     color: #fff;
     text-align: center;

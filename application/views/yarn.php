@@ -28,26 +28,38 @@
         </thead>
 
         <tbody>
-        <?php foreach($apps as $a){
+        <?php 
+        for($i=0 ; $i < $nb_apps ; $i++)
+        {
     
         /* Time calculation */
-        $start = new DateTime('@'.substr($a["startTime"],0,-3));	
+        $start = new DateTime('@'.substr($apps[$i]["startTime"],0,-3));	
         $start->setTimezone(new DateTimeZone('Europe/Paris'));
-        $end = new DateTime('@'.substr($a["finishTime"],0,-3));
+        $end = new DateTime('@'.substr($apps[$i]["finishTime"],0,-3));
         $end->setTimezone(new DateTimeZone('Europe/Paris'));
         $duration = $start->diff($end);
         ?>
           <tr>
-            <td><?php echo substr($a["id"],4); ?></td>
-            <td><?php echo $a["user"]; ?></td>
-            <td><?php echo $a["name"]; ?></td>
-            <td><?php echo $a["queue"]; ?></td>
+            <td><?php echo substr($apps[$i]["id"],4); ?></td>
+            <td><?php echo $apps[$i]["user"]; ?></td>
+            <td><?php echo $apps[$i]["name"]; ?></td>
+            <td><?php echo $apps[$i]["queue"]; ?></td>
             <td><?php echo $start->format('D H:i:s'); ?></td>
             <td><?php echo $end->format('D H:i:s'); ?></td>
             <td><?php echo $duration->format('%H:%M:%S'); ?></td>
-            <td><span class="label green"><?php echo $a["state"]; ?></span></td>
+            <?php if($apps[$i]["state"]=="SUCCEEDED"){
+            ?>
+            <td><span class="label green"><?php echo $apps[$i]["state"]; ?></span></td>
+            <?php
+            }else{
+            ?>
+            <td><span class="label red"><?php echo $apps[$i]["state"]; ?></span></td>
+            <?php
+            }
+            ?>
           </tr>
-        <?php } ?>
+        <?php } 
+        ?>
         </tbody
       </table>
     </div>

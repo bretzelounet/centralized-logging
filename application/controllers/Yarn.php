@@ -21,14 +21,24 @@ class Yarn extends CI_Controller {
     
     public function __construct()
     {
-            parent::__construct();
-            $this->load->model('file_model');
+        parent::__construct();
+        $this->load->model('file_model');
+        $this->load->library('pagination');
     }
     
-	public function index()
+	public function index($nb=0)
 	{
-        $data = array('file_content' => $this->file_model->get_file_content());
-        $data = array('apps' => $this->file_model->get_applications());
+        $data["file_content"] = $this->file_model->get_file_content();
+        $data["apps"] = $this->file_model->get_applications();
+        $data["nb_apps"] = count($this->file_model->get_applications());
+        
+        $config['base_url'] = base_url("/index.php/yarn");;
+        $config['total_rows'] = 200;
+        $config['per_page'] = 20;
+
+        $this->pagination->initialize($config);
+
+        echo $this->pagination->create_links();
         
         $this->load->view('header');
         $this->load->view('yarn', $data);
