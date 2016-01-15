@@ -83,9 +83,12 @@
                 </tbody>
             </table>
         </div>
+        <div style="float:left;">
         <ul class="pagination">
             <?php echo $pagination;?>
         </ul>
+        </div>
+        <div class="showing right-align">Showing 1 to 50 of <?php echo $nb_apps;?> entries</div>
     </div>
 </div>
 

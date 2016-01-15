@@ -105,3 +105,9 @@ table.striped > tbody > tr:hover{
 .pagination li{
     font-size: 16px;
 }
+
+.showing{
+    font-size: 16px;
+    color: #444;
+    padding : 15px 0;
+}
