@@ -31,7 +31,6 @@ class Yarn extends CI_Controller {
         /* number of jobs per page */
         $per_page = 50;
         
-        $data["file_content"] = $this->file_model->get_file_content();
         $data["apps"] = $this->file_model->get_applications();
         $data["nb_apps"] = count($this->file_model->get_applications());
         $data["position"] = ($page*$per_page)-50;

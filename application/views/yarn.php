@@ -1,15 +1,3 @@
-<nav role="navigation">
-    <div class="nav-wrapper container">
-        <a href="#" class="brand-logo right">Centralized <span style="color:#e67e22;">logging</span></a>
-        <ul id="nav-links" class="hide-on-med-and-down">
-            <li><a href="#"><i class="material-icons">settings</i></a></li>
-            <li><a class="active" href="#">YARN</a></li>
-            <li><a href="#">OOZIE</a></li>
-            <li><a href="#">IMPALA</a></li>
-        </ul>
-    </div>
-</nav>
-
 <div class="section">
     <div class="container">
         <h4 class="orange-text title">Yarn applications</h4>
@@ -31,11 +19,11 @@
 
                 <tbody>
                     <?php 
-                $page = $position + $per_page;
-                if($page > $nb_apps){
-                    $page = $nb_apps;
+                $coupure = $position + $per_page;
+                if($coupure > $nb_apps){
+                    $coupure = $nb_apps;
                 }
-        for($i=$position ; $i < $page ; $i++)
+        for($i=$position ; $i < $coupure ; $i++)
         {
     
         /* Time calculation */
@@ -44,8 +32,8 @@
         $end = new DateTime('@'.substr($apps[$i]["finishTime"],0,-3));
         $end->setTimezone(new DateTimeZone('Europe/Paris'));
         $duration = $start->diff($end);
-        ?>
-                        <tr>
+        ?><a href="#">
+                        <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $apps[$i]["id"]?>';">
                             <td>
                                 <?php echo substr($apps[$i]["id"],4); ?>
                             </td>
@@ -88,10 +76,6 @@
             <?php echo $pagination;?>
         </ul>
         </div>
-        <div class="showing right-align">Showing 1 to 50 of <?php echo $nb_apps;?> entries</div>
+        <div class="showing right-align">Showing <?php echo $position+1;?> to <?php echo $coupure;?> of <?php echo $nb_apps;?> entries</div>
     </div>
 </div>
-
-
-<footer class="page-footer orange">
-</footer>
