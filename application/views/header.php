@@ -18,8 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <ul id="nav-links" class="hide-on-med-and-down">
             <li><a href="#"><i class="material-icons">settings</i></a></li>
             <li><a class="active" href="<?php echo base_url("yarn"); ?>">YARN</a></li>
-            <li><a href="#">OOZIE</a></li>
             <li><a href="#">IMPALA</a></li>
+            <li><a href="#">OOZIE</a></li>
         </ul>
     </div>
 </nav>
