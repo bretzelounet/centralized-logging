@@ -20,31 +20,31 @@
                 <tbody>
                     <?php 
                 $coupure = $position + $per_page;
-                if($coupure > $nb_apps){
-                    $coupure = $nb_apps;
+                if($coupure > $nb_jobs){
+                    $coupure = $nb_jobs;
                 }
         for($i=$position ; $i < $coupure ; $i++)
         {
     
         /* Time calculation */
-        $start = new DateTime('@'.substr($apps[$i]["startTime"],0,-3));	
+        $start = new DateTime('@'.substr($jobs[$i]["startTime"],0,-3));	
         $start->setTimezone(new DateTimeZone('Europe/Paris'));
-        $end = new DateTime('@'.substr($apps[$i]["finishTime"],0,-3));
+        $end = new DateTime('@'.substr($jobs[$i]["finishTime"],0,-3));
         $end->setTimezone(new DateTimeZone('Europe/Paris'));
         $duration = $start->diff($end);
         ?><a href="#">
-                        <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $apps[$i]["id"]?>';">
+                        <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $jobs[$i]["id"]?>';">
                             <td>
-                                <?php echo substr($apps[$i]["id"],4); ?>
+                                <?php echo substr($jobs[$i]["id"],4); ?>
                             </td>
                             <td>
-                                <?php echo $apps[$i]["user"]; ?>
+                                <?php echo $jobs[$i]["user"]; ?>
                             </td>
                             <td>
-                                <?php echo $apps[$i]["name"]; ?>
+                                <?php echo $jobs[$i]["name"]; ?>
                             </td>
                             <td>
-                                <?php echo $apps[$i]["queue"]; ?>
+                                <?php echo $jobs[$i]["queue"]; ?>
                             </td>
                             <td>
                                 <?php echo $start->format('D H:i:s'); ?>
@@ -55,13 +55,13 @@
                             <td>
                                 <?php echo $duration->format('%H:%M:%S'); ?>
                             </td>
-                            <?php if($apps[$i]["state"]=="SUCCEEDED"){
+                            <?php if($jobs[$i]["state"]=="SUCCEEDED"){
             ?>
-                                <td><span class="label green"><?php echo $apps[$i]["state"]; ?></span></td>
+                                <td><span class="label green"><?php echo $jobs[$i]["state"]; ?></span></td>
                                 <?php
             }else{
             ?>
-                                    <td><span class="label red"><?php echo $apps[$i]["state"]; ?></span></td>
+                                    <td><span class="label red"><?php echo $jobs[$i]["state"]; ?></span></td>
                                     <?php
             }
             ?>
@@ -76,6 +76,6 @@
             <?php echo $pagination;?>
         </ul>
         </div>
-        <div class="showing right-align">Showing <?php echo $position+1;?> to <?php echo $coupure;?> of <?php echo $nb_apps;?> entries</div>
+        <div class="showing right-align">Showing <?php echo $position+1;?> to <?php echo $coupure;?> of <?php echo $nb_jobs;?> entries</div>
     </div>
 </div>

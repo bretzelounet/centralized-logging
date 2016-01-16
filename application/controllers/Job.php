@@ -22,13 +22,16 @@ class Job extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('file_model');
+        $this->load->model('rest_model');
     }
     
 	public function index($job_id=1)
 	{   
-        $data["job_attemps"] = $this->file_model->get_job_attemps($job_id);
+        $data["job_infos"] = $this->rest_model->get_job_info($job_id);
+        $data["job_attempts"] = $this->rest_model->get_job_attemps($job_id);
+        $data["tasks_attempts"] = $this->rest_model->get_tasks_attempts($job_id);
         $this->load->view('header');
+        $this->load->view('job', $data);
 		$this->load->view('footer');
 	}
 }

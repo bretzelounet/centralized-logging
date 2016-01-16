@@ -22,7 +22,7 @@ class Yarn extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('file_model');
+        $this->load->model('rest_model');
         $this->load->library('pagination');
     }
     
@@ -31,14 +31,14 @@ class Yarn extends CI_Controller {
         /* number of jobs per page */
         $per_page = 50;
         
-        $data["apps"] = $this->file_model->get_applications();
-        $data["nb_apps"] = count($this->file_model->get_applications());
+        $data["jobs"] = $this->rest_model->get_jobs();
+        $data["nb_jobs"] = count($this->rest_model->get_jobs());
         $data["position"] = ($page*$per_page)-50;
         $data["per_page"] = $per_page;
         
         /* pagination configuration */
         $config['base_url'] = base_url("/yarn/index");;
-        $config['total_rows'] = count($this->file_model->get_applications());
+        $config['total_rows'] = count($this->rest_model->get_jobs());
         $config['per_page'] = $per_page;
         $config['use_page_numbers'] = TRUE;
         $config['cur_tag_open'] = '<li class="active">';

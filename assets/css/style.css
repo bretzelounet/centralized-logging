@@ -9,7 +9,8 @@ nav{
 }
 
 .container{
-    max-width: 1500px;
+    width : 90%;
+    max-width: 2000px;
 }
 
 .main-container{
@@ -72,7 +73,7 @@ a.active{
 }
 
 .table-apps{
-    font-size : 16px;
+    font-size : 15px;
     color : #757575 ;
     margin-bottom : 15px;
 }
@@ -110,4 +111,39 @@ table.striped > tbody > tr:hover{
     font-size: 16px;
     color: #444;
     padding : 15px 0;
+}
+
+.card-header{
+    padding: 10px 20px;
+    background-color: #2c3e50;
+    color: white;
+}
+
+.card .card-content{
+    padding : 0 0 5px 0;
+}
+
+.collection{
+    border : none;
+}
+
+.secondary-content{
+    color : black;
+}
+
+.main-content{
+    font-weight: 400;
+    color : #e67e22 ;
+}
+
+.tabs-content{
+    padding: 80px 20px 20px 20px;
+}
+
+.tabs .col{
+    font-size: 18px;
+}
+
+.tabs{
+    height: 55px;
 }
