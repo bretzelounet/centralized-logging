@@ -3,7 +3,7 @@
         <h4 class="orange-text title">Yarn applications</h4>
 
         <div class="main-container">
-            <table class="striped table-apps">
+            <table class="bordered table-apps">
                 <thead>
                     <tr>
                         <th data-field="id">Job ID</th>

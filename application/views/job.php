@@ -67,7 +67,7 @@
                             </div>
                             <div class="tabs-content">
                                 <div id="test1" class="col s12">
-                                    <table class="striped">
+                                    <table class="bordered">
                                         <thead>
                                             <tr>
                                                 <th data-field="attempt_id">Job attempt ID</th>
@@ -80,7 +80,8 @@
                                         <tbody>
                                             <?php
                                     foreach($job_attempts as $ja){
-                                    $start_attempt = new DateTime('@'.substr($ja["startTime"],0,-3));
+                                        $start_attempt = new DateTime('@'.substr($ja["startTime"],0,-3));
+                                        $start_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
                                     ?>
                                                 <tr>
                                                     <td>
@@ -93,7 +94,7 @@
                                                         <?php echo $ja["nodeId"];?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $ja["startTime"];?>
+                                                        <?php echo $start_attempt->format('d/m/y H:i:s');?>
                                                     </td>
                                                 </tr>
                                                 <?php }
@@ -102,13 +103,16 @@
                                     </table>
                                 </div>
                                 <div id="test2" class="col s12">
-                                    <table class="striped">
+                                    <table  class="bordered">
                                         <thead>
                                             <tr>
-                                                <th data-field="attempt_id">Job attempt ID</th>
-                                                <th data-field="container_id">Container ID</th>
-                                                <th data-field="node_id">Node ID (Job master)</th>
-                                                <th data-field="start">Start time</th>
+                                                <th data-field="tasks_attempts_id">Tasks attempts ID</th>
+                                                <th data-field="progress">Progress</th>
+                                                <th data-field="status">Status</th>
+                                                <th data-field="node">Node</th>
+                                                <th data-field="start_time">Start time</th>
+                                                <th data-field="end_time">End time</th>
+                                                <th data-field="duration">Duration</th>
                                             </tr>
                                         </thead>
 
@@ -116,10 +120,50 @@
                                             <?php
                                     foreach($tasks_attempts as $tasks){
                                         foreach($tasks["taskAttempts"]["taskAttempt"] as $ta){
+                                            
+                                            /* Time calculation */
+                                            $start_task_attempt = new DateTime('@'.substr($ta["startTime"],0,-3));	
+                                            $start_task_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
+                                            $end_task_attempt = new DateTime('@'.substr($ta["finishTime"],0,-3));
+                                            $end_task_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
+                                            $duration_task_attempt = $start_task_attempt->diff($end_task_attempt);
                                             ?>
-                                            
-                                            
-                                            
+                                            <tr>
+                                                    <td>
+                                                        <?php echo $ta["id"];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ta["progress"];?>%
+                                                    </td>
+                                                <?php if($job_infos["state"]=="SUCCEEDED"){
+                                                ?>
+                                                    <td class="green-text">
+                                                        <?php echo $ta["state"];?>
+                                                    </td>
+                                                <?php
+                                                }
+                                                else
+                                                {
+                                                ?>
+                                                    <td class="green-text">
+                                                        <?php echo $ta["state"];?>
+                                                    </td>
+                                                <?php
+                                                }
+                                                ?>
+                                                    <td>
+                                                        <?php echo $ta["nodeHttpAddress"];?>
+                                                    </td>
+                                                   <td>
+                                                        <?php echo $start_task_attempt->format('d/m/y H:i:s');?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $end_task_attempt->format('d/m/y H:i:s');?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $duration_task_attempt->format('%H:%M:%S');?>
+                                                    </td>
+                                                </tr>
                                             <?php
                                         }
                                     }

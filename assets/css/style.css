@@ -3,6 +3,10 @@ html {
     min-height: 100%;
 }
 
+body{
+    background: #f0f0f0;
+}
+
 nav{
     background-color: #2c3e50;
     margin-bottom: 1%;
@@ -73,12 +77,13 @@ a.active{
 }
 
 .table-apps{
+    background: white;
     font-size : 15px;
     color : #757575 ;
     margin-bottom : 15px;
 }
 
-table.striped > tbody > tr:hover{
+table > tbody > tr:hover{
     cursor:pointer;
     background-color: rgba(129,208,177,.3);
 }
@@ -121,6 +126,11 @@ table.striped > tbody > tr:hover{
 
 .card .card-content{
     padding : 0 0 5px 0;
+}
+
+.card{
+    box-shadow:none;
+    border : 
 }
 
 .collection{
