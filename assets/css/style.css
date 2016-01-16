@@ -43,8 +43,9 @@ nav .brand-logo{
     font-weight: 400;
 }
 
-#nav-links{
+#nav-links a{
     font-weight: 300;
+    font-size: 18px;
 }
 
 nav ul a:hover{

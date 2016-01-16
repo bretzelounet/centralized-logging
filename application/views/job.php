@@ -102,7 +102,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="test2" class="col s12">
+                                <div style="height:67vh; overflow-y:scroll;" id="test2" class="col s12">
                                     <table  class="bordered">
                                         <thead>
                                             <tr>
@@ -135,7 +135,7 @@
                                                     <td>
                                                         <?php echo $ta["progress"];?>%
                                                     </td>
-                                                <?php if($job_infos["state"]=="SUCCEEDED"){
+                                                <?php if($ta["state"]=="SUCCEEDED"){
                                                 ?>
                                                     <td class="green-text">
                                                         <?php echo $ta["state"];?>
@@ -145,7 +145,7 @@
                                                 else
                                                 {
                                                 ?>
-                                                    <td class="green-text">
+                                                    <td class="red-text">
                                                         <?php echo $ta["state"];?>
                                                     </td>
                                                 <?php
