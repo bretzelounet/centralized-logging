@@ -107,6 +107,7 @@
                                         <thead>
                                             <tr>
                                                 <th data-field="tasks_attempts_id">Tasks attempts ID</th>
+                                                <th data-field="type">Type</th>
                                                 <th data-field="progress">Progress</th>
                                                 <th data-field="status">Status</th>
                                                 <th data-field="node">Node</th>
@@ -131,6 +132,9 @@
                                             <tr>
                                                     <td>
                                                         <?php echo $ta["id"];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ta["type"];?>
                                                     </td>
                                                     <td>
                                                         <?php echo $ta["progress"];?>%
