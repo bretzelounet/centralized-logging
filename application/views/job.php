@@ -103,7 +103,7 @@
                                     </table>
                                 </div>
                                 <div style="height:67vh; overflow-y:scroll;" id="test2" class="col s12">
-                                    <table  class="bordered">
+                                    <table class="bordered">
                                         <thead>
                                             <tr>
                                                 <th data-field="tasks_attempts_id">Tasks attempts ID</th>
@@ -129,7 +129,7 @@
                                             $end_task_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
                                             $duration_task_attempt = $start_task_attempt->diff($end_task_attempt);
                                             ?>
-                                            <tr>
+                                                <tr>
                                                     <td>
                                                         <?php echo $ta["id"];?>
                                                     </td>
@@ -139,36 +139,36 @@
                                                     <td>
                                                         <?php echo $ta["progress"];?>%
                                                     </td>
-                                                <?php if($ta["state"]=="SUCCEEDED"){
+                                                    <?php if($ta["state"]=="SUCCEEDED"){
                                                 ?>
-                                                    <td class="green-text">
-                                                        <?php echo $ta["state"];?>
-                                                    </td>
-                                                <?php
+                                                        <td class="green-text">
+                                                            <?php echo $ta["state"];?>
+                                                        </td>
+                                                        <?php
                                                 }
                                                 else
                                                 {
                                                 ?>
-                                                    <td class="red-text">
-                                                        <?php echo $ta["state"];?>
-                                                    </td>
-                                                <?php
+                                                            <td class="red-text">
+                                                                <?php echo $ta["state"];?>
+                                                            </td>
+                                                            <?php
                                                 }
                                                 ?>
-                                                    <td>
-                                                        <?php echo $ta["nodeHttpAddress"];?>
-                                                    </td>
-                                                   <td>
-                                                        <?php echo $start_task_attempt->format('d/m/y H:i:s');?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $end_task_attempt->format('d/m/y H:i:s');?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $duration_task_attempt->format('%H:%M:%S');?>
-                                                    </td>
+                                                                <td>
+                                                                    <?php echo $ta["nodeHttpAddress"];?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $start_task_attempt->format('d/m/y H:i:s');?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $end_task_attempt->format('d/m/y H:i:s');?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $duration_task_attempt->format('%H:%M:%S');?>
+                                                                </td>
                                                 </tr>
-                                            <?php
+                                                <?php
                                         }
                                     }
                                             ?>

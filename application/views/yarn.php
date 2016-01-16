@@ -1,6 +1,6 @@
 <div class="section">
     <div class="container">
-        <h4 class="orange-text title">Yarn applications</h4>
+        <!-- <h4 class="orange-text title">Yarn applications</h4> -->
 
         <div class="main-container">
             <table class="bordered table-apps">

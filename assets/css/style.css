@@ -9,7 +9,7 @@ body {
 
 nav {
     background-color: #2c3e50;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
 }
 
 .container {
@@ -18,7 +18,7 @@ nav {
 }
 
 .main-container {
-    height: 67vh;
+    height: 75vh;
     overflow-y: scroll;
 }
 
@@ -131,7 +131,8 @@ table > tbody > tr:hover {
 
 .card {
     box-shadow: none;
-    border:
+    border:none;
+    margin:0;
 }
 
 .collection {
