@@ -73,7 +73,7 @@
                                     <li class="tab col s3"><a href="#test3">syslog</a></li>
                                 </ul>
                             </div>
-                            <div class="tabs-content">
+                            <div class="tabs-content logs">
                                 <div style="height:58vh; overflow-y:scroll;" id="test1" class="col s12">
                                     <?php echo nl2br($job_attempt_logs["stdout"]);?>
                                 </div>
