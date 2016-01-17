@@ -40,11 +40,12 @@ footer {
 
 footer.page-footer {
     padding: 15px 5%;
+    margin:0;
 }
 
 nav .brand-logo {
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 #nav-links a {
@@ -139,6 +140,10 @@ table > tbody > tr:hover {
     margin: 0;
 }
 
+.card .card-title {
+    font-size:20px;
+}
+
 .collection {
     border: none;
 }
@@ -161,5 +166,19 @@ table > tbody > tr:hover {
 }
 
 .tabs {
-    height: 55px;
+    
+    height: 50px;
+    overflow-x: hidden;
+}
+
+#breadcumb{
+    font-size : 20px;
+    height:50px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+#breadcumb .nav-wrapper{
+    line-height: 50px;
+    padding : 0 20px;
 }

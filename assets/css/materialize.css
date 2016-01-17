@@ -2745,7 +2745,7 @@ video.responsive-video {
   float: none;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1660px) {
   .pagination {
     width: 100%;
   }
@@ -2852,7 +2852,7 @@ ul.staggered-list li {
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1660px) {
   .hide-on-med-and-down {
     display: none !important;
   }
@@ -2864,25 +2864,25 @@ ul.staggered-list li {
   }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 600px) and (max-width: 1660px) {
   .hide-on-med-only {
     display: none !important;
   }
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1661px) {
   .hide-on-large-only {
     display: none !important;
   }
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1661px) {
   .show-on-large {
     display: block !important;
   }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 600px) and (max-width: 1660px) {
   .show-on-medium {
     display: block !important;
   }
@@ -2900,7 +2900,7 @@ ul.staggered-list li {
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1660px) {
   .show-on-medium-and-down {
     display: block !important;
   }
@@ -2972,7 +2972,7 @@ td, th {
   border-radius: 2px;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1660px) {
   table.responsive-table {
     width: 100%;
     border-collapse: collapse;
@@ -6658,7 +6658,7 @@ nav ul a span.badge {
   }
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1661px) {
   .container {
     width: 70%;
   }
@@ -7119,7 +7119,7 @@ nav ul a span.badge {
   }
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1661px) {
   .row .col.l1 {
     width: 8.3333333333%;
     margin-left: auto;
@@ -7328,7 +7328,7 @@ nav .nav-wrapper {
   height: 100%;
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1661px) {
   nav a.button-collapse {
     display: none;
   }
@@ -7362,7 +7362,7 @@ nav .brand-logo.center {
           transform: translateX(-50%);
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1660px) {
   nav .brand-logo {
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -7531,7 +7531,7 @@ html {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1660px) {
   html {
     font-size: 14.5px;
   }
@@ -7720,7 +7720,7 @@ small {
   }
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1660px) {
   .flow-text {
     font-size: 1.632rem;
   }
@@ -7887,7 +7887,7 @@ small {
   }
 }
 
-@media only screen and (min-width: 601px) and (max-width: 992px) {
+@media only screen and (min-width: 601px) and (max-width: 1660px) {
   #toast-container {
     left: 5%;
     bottom: 7%;
@@ -7895,7 +7895,7 @@ small {
   }
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1661px) {
   #toast-container {
     top: 10%;
     right: 7%;
@@ -7947,13 +7947,13 @@ small {
   }
 }
 
-@media only screen and (min-width: 601px) and (max-width: 992px) {
+@media only screen and (min-width: 601px) and (max-width: 1660px) {
   .toast {
     float: left;
   }
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1661px) {
   .toast {
     float: right;
   }
@@ -8415,7 +8415,7 @@ a.waves-effect .waves-ripple {
   will-change: top, opacity;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1660px) {
   .modal {
     width: 80%;
   }
@@ -8973,7 +8973,7 @@ textarea.materialize-textarea + label:after {
   margin-left: 3rem;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1660px) {
   .input-field .prefix ~ input {
     width: 86%;
     width: calc(100% - 3rem);
@@ -9838,7 +9838,7 @@ select {
   left: auto;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1660px) {
   .side-nav.fixed {
     left: -105%;
   }

@@ -1,9 +1,9 @@
 <div class="section">
     <div class="container">
         <div class="row">
-            <div class="col s6 m3">
+            <div class="col s6 m3 l2">
                 <div class="card">
-                    <div class="card-header"><span class="card-title">Job : <?php echo substr($job_infos["id"],4);?></span></div>
+                    <div class="card-header"><span class="card-title">Job overview</span></div>
                     <div class="card-content">
                         <?php
                         /* Time calculation */
@@ -15,7 +15,7 @@
                         ?>
                             <ul class="collection">
                                 <li class="collection-item">
-                                    <div><span class="main-content">NAME</span><span class="secondary-content"><?php echo substr($job_infos["name"],0,30);?>
+                                    <div><span class="main-content">NAME</span><span class="secondary-content"><?php echo substr($job_infos["name"],0,20);?>
                             </span>
                                     </div>
                                 </li>
@@ -55,9 +55,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col s6 m9">
+            <div class="col s6 m9 l10">
                 <div class="card">
                     <div class="card-content">
+                        <nav id="breadcumb">
+                            <div class="nav-wrapper">
+                                <a href="<?php echo base_url("yarn"); ?>" class="breadcrumb">All jobs</a>
+                                <a href="<?php echo base_url("job/index"); echo '/'.$job_infos["id"];?>" class="breadcrumb"><?php echo $job_infos["id"];?></a>
+                            </div>
+                        </nav>
                         <div class="row">
                             <div class="col s12 m12">
                                 <ul class="tabs">
@@ -66,7 +72,7 @@
                                 </ul>
                             </div>
                             <div class="tabs-content">
-                                <div style="height:67vh; overflow-y:scroll;" id="test1" class="col s12">
+                                <div style="height:58vh; overflow-y:scroll;" id="test1" class="col s12">
                                     <table class="bordered">
                                         <thead>
                                             <tr>
@@ -102,7 +108,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div style="height:67vh; overflow-y:scroll;" id="test2" class="col s12">
+                                <div style="height:58vh; overflow-y:scroll;" id="test2" class="col s12">
                                     <table class="bordered">
                                         <thead>
                                             <tr>

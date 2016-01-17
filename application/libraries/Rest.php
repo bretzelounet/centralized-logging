@@ -1,25 +1,18 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Rest_model extends CI_Model {
+class Rest {
 
-        public function __construct()
-        {
-                // Call the CI_Model constructor
-                parent::__construct();
-            
-                /* Call the Rest API to get the whole job collection only 1 time */
-                $tmp = json_decode(file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs'),true);
-                $this->jobs = array_reverse($tmp["jobs"]["job"]);
-        }
-    
         public function get_jobs()
         {
-            return $this->jobs;
+            $tmp = json_decode(file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs'),true);
+            $jobs = array_reverse($tmp["jobs"]["job"]);
+            return $jobs;
         }
     
         public function get_jobs_ids(){
             $jobs_ids=array();
-            foreach($this->jobs as $j){
+            foreach($this->get_jobs() as $j){
                 array_push($jobs_ids,$j["id"]);
             }
             return $jobs_ids;
