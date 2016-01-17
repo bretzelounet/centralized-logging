@@ -43,8 +43,7 @@ class Job extends CI_Controller {
                 $this->load->view('job', $data);
             }else{
                 
-                $node_id = str_replace(":","_",$node_id);
-                $data["job_attempt_logs"] = $this->logs->get_job_attempt_logs($job_id, $data["job_infos"]["user"], $node_id, $cont_id, "stdout");
+                $data["job_attempt_logs"] = $this->logs->get_attempt_logs($job_id, $data["job_infos"]["user"], $node_id, $cont_id, "stdout");
                 $this->load->view('job_logs', $data);
             }
             
