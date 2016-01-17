@@ -66,7 +66,7 @@
                                 </ul>
                             </div>
                             <div class="tabs-content">
-                                <div id="test1" class="col s12">
+                                <div style="height:67vh; overflow-y:scroll;" id="test1" class="col s12">
                                     <table class="bordered">
                                         <thead>
                                             <tr>
@@ -83,7 +83,7 @@
                                         $start_attempt = new DateTime('@'.substr($ja["startTime"],0,-3));
                                         $start_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
                                     ?>
-                                                <tr>
+                                                <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $job_infos["id"];?>/<?php echo $ja["nodeId"];?>';">
                                                     <td>
                                                         <?php echo $ja["id"];?>
                                                     </td>

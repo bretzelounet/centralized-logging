@@ -22,15 +22,32 @@ class Job extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('file_model');
     }
     
-	public function index($job_id=1)
+	public function index($job_id=NULL, $node_id=NULL)
 	{   
-        $data["job_infos"] = $this->rest_model->get_job_info($job_id);
-        $data["job_attempts"] = $this->rest_model->get_job_attemps($job_id);
-        $data["tasks_attempts"] = $this->rest_model->get_tasks_attempts($job_id);
-        $this->load->view('header');
-        $this->load->view('job', $data);
-		$this->load->view('footer');
+        $jobs_ids = $this->rest_model->get_jobs_ids();
+        if($job_id == NULL || !in_array($job_id, $jobs_ids)){
+            show_404($page = '', $log_error = TRUE);
+        }
+        else{
+            $this->load->view('header');
+            
+            $data["job_infos"] = $this->rest_model->get_job_info($job_id);
+            
+            if($node_id == NULL){
+                $data["job_attempts"] = $this->rest_model->get_job_attemps($job_id);
+                $data["tasks_attempts"] = $this->rest_model->get_tasks_attempts($job_id);
+
+                $this->load->view('job', $data);
+            }else{
+                $node_id = str_replace(":","_",$node_id);
+                $data["file_content"] = $this->file_model->get_file_content($data["job_infos"]["user"], $node_id);
+                $this->load->view('job_logs', $data);
+            }
+            
+            $this->load->view('footer');  
+        }
 	}
 }

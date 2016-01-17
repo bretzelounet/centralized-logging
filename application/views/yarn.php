@@ -33,7 +33,7 @@
         $end->setTimezone(new DateTimeZone('Europe/Paris'));
         $duration = $start->diff($end);
         ?><a href="#">
-                        <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $jobs[$i]["id"]?>';">
+                        <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $jobs[$i]["id"];?>';">
                             <td>
                                 <?php echo substr($jobs[$i]["id"],4); ?>
                             </td>

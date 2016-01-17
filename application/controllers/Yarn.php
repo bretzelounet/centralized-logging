@@ -29,43 +29,51 @@ class Yarn extends CI_Controller {
 	{
         /* number of jobs per page */
         $per_page = 50;
+        $nb_jobs = count($this->rest_model->get_jobs());
         
-        $data["jobs"] = $this->rest_model->get_jobs();
-        $data["nb_jobs"] = count($this->rest_model->get_jobs());
-        $data["position"] = ($page*$per_page)-50;
-        $data["per_page"] = $per_page;
-        
-        /* pagination configuration */
-        $config['base_url'] = base_url("/yarn/index");;
-        $config['total_rows'] = count($this->rest_model->get_jobs());
-        $config['per_page'] = $per_page;
-        $config['use_page_numbers'] = TRUE;
-        $config['cur_tag_open'] = '<li class="active">';
-        $config['cur_tag_close'] = '</li>';
-        $config['num_tag_open'] = '<li class="waves-effect">';
-        $config['num_tag_close'] = '</li>';
-        $config['next_link'] = '<i class="material-icons">chevron_right</i>';
-        $config['next_tag_open'] = '<li class="waves-effect">';
-        $config['next_tag_close'] = '</li>';
-        $config['prev_link'] = '<i class="material-icons">chevron_left</i>';
-        $config['prev_tag_open'] = '<li class="waves-effect">';
-        $config['prev_tag_close'] = '</li>';
-        
-        $config['last_link'] = 'Last';
-        $config['last_tag_open'] = '<li class="waves-effect">';
-        $config['last_tag_close'] = '</li>';
-        
-        $config['first_link'] = 'First';
-        $config['first_tag_open'] = '<li class="waves-effect">';
-        $config['first_tag_close'] = '</li>';
+        if($page <= 0 || $page > ceil($nb_jobs/$per_page)){
+            show_404($page = '', $log_error = TRUE);
+            
+        }else{
+            
+            $data["jobs"] = $this->rest_model->get_jobs();
+            $data["nb_jobs"] = $nb_jobs;
+            $data["position"] = ($page*$per_page)-50;
+            $data["per_page"] = $per_page;
+
+            /* pagination configuration */
+            $config['base_url'] = base_url("/yarn/index");;
+            $config['total_rows'] = $nb_jobs;
+            $config['per_page'] = $per_page;
+            $config['use_page_numbers'] = TRUE;
+            $config['cur_tag_open'] = '<li class="active">';
+            $config['cur_tag_close'] = '</li>';
+            $config['num_tag_open'] = '<li class="waves-effect">';
+            $config['num_tag_close'] = '</li>';
+            $config['next_link'] = '<i class="material-icons">chevron_right</i>';
+            $config['next_tag_open'] = '<li class="waves-effect">';
+            $config['next_tag_close'] = '</li>';
+            $config['prev_link'] = '<i class="material-icons">chevron_left</i>';
+            $config['prev_tag_open'] = '<li class="waves-effect">';
+            $config['prev_tag_close'] = '</li>';
+
+            $config['last_link'] = 'Last';
+            $config['last_tag_open'] = '<li class="waves-effect">';
+            $config['last_tag_close'] = '</li>';
+
+            $config['first_link'] = 'First';
+            $config['first_tag_open'] = '<li class="waves-effect">';
+            $config['first_tag_close'] = '</li>';
 
 
-        $this->pagination->initialize($config);
+            $this->pagination->initialize($config);
 
-        $data["pagination"] = $this->pagination->create_links();
-        
-        $this->load->view('header');
-        $this->load->view('yarn', $data);
-		$this->load->view('footer');
+            $data["pagination"] = $this->pagination->create_links();
+
+            $this->load->view('header');
+            $this->load->view('yarn', $data);
+            $this->load->view('footer');
+            
+        }
 	}
 }

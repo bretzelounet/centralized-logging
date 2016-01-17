@@ -11,17 +11,18 @@ class Rest_model extends CI_Model {
                 $tmp = json_decode(file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs'),true);
                 $this->jobs = array_reverse($tmp["jobs"]["job"]);
         }
-
-        public function get_file_content()
-        {
-            $output = shell_exec('C:\"Program Files (x86)"\Gow\bin\cat.exe D:\test\cedric\app_2\blabla.log');
-            $content = xss_clean(html_escape($output));
-            return $content;
-        }
     
         public function get_jobs()
         {
             return $this->jobs;
+        }
+    
+        public function get_jobs_ids(){
+            $jobs_ids=array();
+            foreach($this->jobs as $j){
+                array_push($jobs_ids,$j["id"]);
+            }
+            return $jobs_ids;
         }
     
         public function get_job_info($job_id)
