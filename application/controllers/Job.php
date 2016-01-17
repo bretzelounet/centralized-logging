@@ -26,25 +26,25 @@ class Job extends CI_Controller {
         $this->load->library('logs');
     }
     
-	public function index($job_id=NULL, $node_id=NULL)
+	public function index($job_id=NULL, $node_id=NULL, $cont_id=NULL)
 	{   
-        $jobs_ids = $this->rest->get_jobs_ids();
-        if($job_id == NULL || !in_array($job_id, $jobs_ids)){
-            show_404($page = '', $log_error = TRUE);
+        if($job_id == NULL){
+            show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
         }
         else{
             $this->load->view('header');
-            
+
             $data["job_infos"] = $this->rest->get_job_info($job_id);
             
-            if($node_id == NULL){
+            if($node_id == NULL || $cont_id == NULL){
                 $data["job_attempts"] = $this->rest->get_job_attemps($job_id);
                 $data["tasks_attempts"] = $this->rest->get_tasks_attempts($job_id);
 
                 $this->load->view('job', $data);
             }else{
+                
                 $node_id = str_replace(":","_",$node_id);
-                $data["file_content"] = $this->logs->get_log_content($job_id, $data["job_infos"]["user"], $node_id);
+                $data["job_attempt_logs"] = $this->logs->get_job_attempt_logs($job_id, $data["job_infos"]["user"], $node_id, $cont_id, "stdout");
                 $this->load->view('job_logs', $data);
             }
             

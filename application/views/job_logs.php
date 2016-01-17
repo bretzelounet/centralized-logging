@@ -75,10 +75,14 @@
                             </div>
                             <div class="tabs-content">
                                 <div style="height:58vh; overflow-y:scroll;" id="test1" class="col s12">
-                                    <?php echo nl2br($file_content);?>
+                                    <?php echo nl2br($job_attempt_logs["stdout"]);?>
                                 </div>
-                                <div style="height:58vh; overflow-y:scroll;" id="test2" class="col s12">Test 2</div>
-                                <div style="height:58vh; overflow-y:scroll;" id="test3" class="col s12">Test 3</div>
+                                <div style="height:58vh; overflow-y:scroll;" id="test2" class="col s12">
+                                    <?php echo nl2br($job_attempt_logs["stderr"]);?>
+                                </div>
+                                <div style="height:58vh; overflow-y:scroll;" id="test3" class="col s12">
+                                    <?php echo nl2br($job_attempt_logs["syslog"]);?>
+                                </div>
                             </div>
                         </div>
                     </div>
