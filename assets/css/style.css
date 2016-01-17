@@ -34,8 +34,12 @@ footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 50px;
+    height: 60px;
     width: 100%;
+}
+
+footer.page-footer {
+    padding: 15px 5%;
 }
 
 nav .brand-logo {
@@ -131,8 +135,8 @@ table > tbody > tr:hover {
 
 .card {
     box-shadow: none;
-    border:none;
-    margin:0;
+    border: none;
+    margin: 0;
 }
 
 .collection {
