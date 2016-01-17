@@ -62,7 +62,7 @@
                             <div class="nav-wrapper">
                                 <a href="<?php echo base_url("yarn"); ?>" class="breadcrumb">All jobs</a>
                                 <a href="<?php echo base_url("job/index"); echo '/'.$job_infos["id"];?>" class="breadcrumb"><?php echo $job_infos["id"];?></a>
-                                <a href="#!" class="breadcrumb">job attempt logs</a>
+                                <a href="#!" class="breadcrumb">logs</a>
                             </div>
                         </nav>
                         <div class="row">
