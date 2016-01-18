@@ -5,14 +5,16 @@ class Logs {
 
         public function get_log_content($job_id, $user, $node_id)
         {
-            $cmd = 'C:\"Program Files (x86)"\Gow\bin\cat.exe D:\test\logs\\'.$user.'\logs\\'.str_replace("job", "application", $job_id).'\\'.$node_id.'*';
+            //$cmd = 'C:\"Program Files (x86)"\Gow\bin\cat.exe D:\test\logs\\'.$user.'\logs\\'.str_replace("job", "application", $job_id).'\\'.$node_id.'*';
+            $cmd = 'cat /mapr/tmp/logs/'.$user.'/logs/'.str_replace("job", "application", $job_id).'/'.$node_id.'*';
+
             $content = shell_exec($cmd);
 
             return $content;
         }
     
         public function get_attempt_logs($job_id, $user, $node_id, $cont_id){
-            $logs=[];
+            $logs=array();
             
             $content = $this->get_log_content($job_id, $user, $node_id);
             $attempt_logs = strstr($content, '&'.$cont_id);

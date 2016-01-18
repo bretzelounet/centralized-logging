@@ -8,9 +8,7 @@
                         <?php
                         /* Time calculation */
                         $start = new DateTime('@'.substr($job_infos["startTime"],0,-3));	
-                        $start->setTimezone(new DateTimeZone('Europe/Paris'));
                         $end = new DateTime('@'.substr($job_infos["finishTime"],0,-3));
-                        $end->setTimezone(new DateTimeZone('Europe/Paris'));
                         $duration = $start->diff($end);
                         ?>
                             <ul class="collection">
@@ -130,9 +128,7 @@
                                             
                                             /* Time calculation */
                                             $start_task_attempt = new DateTime('@'.substr($ta["startTime"],0,-3));	
-                                            $start_task_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
                                             $end_task_attempt = new DateTime('@'.substr($ta["finishTime"],0,-3));
-                                            $end_task_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
                                             $duration_task_attempt = $start_task_attempt->diff($end_task_attempt);
                                             ?>
                                                 <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $job_infos["id"];?>/<?php echo strstr($ta["nodeHttpAddress"],":", TRUE);?>/<?php echo $ta["assignedContainerId"]; ?>';">

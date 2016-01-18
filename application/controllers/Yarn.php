@@ -24,6 +24,7 @@ class Yarn extends CI_Controller {
         parent::__construct();
         $this->load->library('pagination');
         $this->load->library('rest');
+        date_default_timezone_set('Europe/Paris');
     }
     
 	public function index($page=1)

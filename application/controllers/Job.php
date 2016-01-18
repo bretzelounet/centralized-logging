@@ -24,6 +24,7 @@ class Job extends CI_Controller {
         parent::__construct();
         $this->load->library('rest');
         $this->load->library('logs');
+        date_default_timezone_set('Europe/Paris');
     }
     
 	public function index($job_id=NULL, $node_id=NULL, $cont_id=NULL)

@@ -28,9 +28,7 @@
     
         /* Time calculation */
         $start = new DateTime('@'.substr($jobs[$i]["startTime"],0,-3));	
-        $start->setTimezone(new DateTimeZone('Europe/Paris'));
         $end = new DateTime('@'.substr($jobs[$i]["finishTime"],0,-3));
-        $end->setTimezone(new DateTimeZone('Europe/Paris'));
         $duration = $start->diff($end);
         ?><a href="#">
                         <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $jobs[$i]["id"];?>';">

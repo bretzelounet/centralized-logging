@@ -10,7 +10,8 @@ class Rest {
             if($tmp === FALSE){
                 show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
             }else{
-                $jobs = array_reverse(json_decode($tmp, true)["jobs"]["job"]);
+                $jobs_array = json_decode($tmp, true);
+                $jobs = array_reverse($jobs_array["jobs"]["job"]);
                 return $jobs;
             }
         }
@@ -22,7 +23,8 @@ class Rest {
             if($tmp === FALSE){
                 show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
             }else{
-                $job_info = array_reverse(json_decode($tmp, true)["job"]);
+                $jobs_array = json_decode($tmp, true);
+                $job_info = array_reverse($jobs_array["job"]);
                 return $job_info;
             }
         }
@@ -34,7 +36,8 @@ class Rest {
             if($tmp === FALSE){
                 show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
             }else{
-                $attemps = array_reverse(json_decode($tmp, true)["jobAttempts"]["jobAttempt"]);
+                $attempts_array = json_decode($tmp, true);
+                $attemps = array_reverse($attempts_array["jobAttempts"]["jobAttempt"]);
                 return $attemps;
             }
         }
@@ -46,7 +49,8 @@ class Rest {
             if($tmp === FALSE){
                 show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
             }else{
-                $tasks = array_reverse(json_decode($tmp, true)["tasks"]["task"]);
+                $tasks_array = json_decode($tmp, true);
+                $tasks = array_reverse($tasks_array["tasks"]["task"]);
             }
             
             $i = 0;

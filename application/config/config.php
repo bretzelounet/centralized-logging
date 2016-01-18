@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/centralized_logging/';
+$config['base_url'] = 'http://109.232.232.41/centralized_logging/';
 
 /*
 |--------------------------------------------------------------------------
@@ -478,7 +478,7 @@ $config['compress_output'] = FALSE;
 | helper' page of the user guide for information regarding date handling.
 |
 */
-$config['time_reference'] = 'local';
+$config['time_reference'] = 'Europe/Paris';
 
 /*
 |--------------------------------------------------------------------------
