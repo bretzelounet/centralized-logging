@@ -7,9 +7,7 @@ class Logs {
         {
             //$cmd = 'C:\"Program Files (x86)"\Gow\bin\cat.exe D:\test\logs\\'.$user.'\logs\\'.str_replace("job", "application", $job_id).'\\'.$node_id.'*';
             $cmd = 'cat /mapr/tmp/logs/'.$user.'/logs/'.str_replace("job", "application", $job_id).'/'.$node_id.'*';
-
             $content = shell_exec($cmd);
-
             return html_entity_decode($content);
         }
     
