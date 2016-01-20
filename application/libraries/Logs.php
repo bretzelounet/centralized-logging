@@ -6,8 +6,9 @@ class Logs {
         public function get_log_content($job_id, $user, $node_id)
         {
             //$cmd = 'C:\"Program Files (x86)"\Gow\bin\cat.exe D:\test\logs\\'.$user.'\logs\\'.str_replace("job", "application", $job_id).'\\'.$node_id.'*';
-            $cmd = 'cat /mapr/tmp/logs/'.$user.'/logs/'.str_replace("job", "application", $job_id).'/'.$node_id.'*';
-            $content = shell_exec($cmd);
+            
+	$cmd = 'cat /mapr/tmp/logs/'.$user.'/logs/'.str_replace("job", "application", $job_id).'/'.$node_id.'*';
+    	$content = shell_exec("sudo bash -c '".$cmd."'");
             return html_entity_decode($content);
         }
     
@@ -50,7 +51,7 @@ class Logs {
             $replacement = "<span style=\"color:#f9a825;font-weight:600;\">$1</span>";
             $content = preg_replace($pattern, $replacement, $content);
             
-            $pattern = "/(ERRO?R?)/";
+            $pattern = "/([ERRO?R?|FATAL])/";
             $replacement = "<span style=\"color:#d50000;font-weight:600;\">$1</span>";
             $content = preg_replace($pattern, $replacement, $content);
             
