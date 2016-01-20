@@ -51,7 +51,7 @@ class Logs {
             $replacement = "<span style=\"color:#f9a825;font-weight:600;\">$1</span>";
             $content = preg_replace($pattern, $replacement, $content);
             
-            $pattern = "/([ERRO?R?|FATAL])/";
+            $pattern = "/(ERRO?R?|FATAL|java.*Exception)/";
             $replacement = "<span style=\"color:#d50000;font-weight:600;\">$1</span>";
             $content = preg_replace($pattern, $replacement, $content);
             
