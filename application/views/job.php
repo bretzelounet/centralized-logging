@@ -124,7 +124,7 @@
                                         <tbody>
                                             <?php
                                     foreach($tasks_attempts as $tasks){
-					if($tasks["taskAttempts"]!=NULL){	
+					                   if($tasks["taskAttempts"]!=NULL){	
                                         foreach($tasks["taskAttempts"]["taskAttempt"] as $ta){
                                             
                                             /* Time calculation */
