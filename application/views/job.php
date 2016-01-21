@@ -8,10 +8,11 @@
                         <?php
                         /* Time calculation */
                         $start = new DateTime('@'.substr($job_infos["startTime"],0,-3));
-			$start->setTimezone(new DateTimeZone('Europe/Paris'));	
+			             $start->setTimezone(new DateTimeZone('Europe/Paris'));	
                         $end = new DateTime('@'.substr($job_infos["finishTime"],0,-3));
-			$end->setTimezone(new DateTimeZone('Europe/Paris')); 
+			             $end->setTimezone(new DateTimeZone('Europe/Paris')); 
                         $duration = $start->diff($end);
+                        $duration->setTimezone(new DateTimeZone('Europe/Paris')); 
                         ?>
                             <ul class="collection">
                                 <li class="collection-item">
@@ -43,7 +44,7 @@
                                                 <div><span class="main-content">FINISHED</span><span class="secondary-content"><?php echo $end->format('d/m/y H:i:s');?></span></div>
                                             </li>
                                             <li class="collection-item">
-                                                <div><span class="main-content">DURATION</span><span class="secondary-content"><?php echo $duration->format('%H:%M:%S');?></span></div>
+                                                <div><span class="main-content">DURATION</span><span class="secondary-content"><?php echo $duration->format('%H:%I:%S');?></span></div>
                                             </li>
                                             <li class="collection-item">
                                                 <div><span class="main-content">MAPS</span> <span class="grey-text">Complete/Total</span><span class="secondary-content"><?php echo$job_infos["mapsCompleted"];?> / <?php echo$job_infos["mapsTotal"];?></span></div>
@@ -172,7 +173,7 @@
                                                                     <?php echo $end_task_attempt->format('d/m/y H:i:s');?>
                                                                 </td>
                                                                 <td>
-                                                                    <?php echo $duration_task_attempt->format('%H:%M:%S');?>
+                                                                    <?php echo $duration_task_attempt->format('%H:%I:%S');?>
                                                                 </td>
                                                 </tr>
                                                 <?php
