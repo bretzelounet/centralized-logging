@@ -23,7 +23,7 @@ class Yarn extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('pagination');
-        $this->load->library('rest');
+        $this->load->library('yarn_rest');
         date_default_timezone_set('Europe/Paris');
     }
     
@@ -31,14 +31,14 @@ class Yarn extends CI_Controller {
 	{
         /* number of jobs per page */
         $per_page = 50;
-        $nb_jobs = count($this->rest->get_jobs());
+        $nb_jobs = count($this->yarn_rest->get_jobs());
         
         if($page <= 0 || $page > ceil($nb_jobs/$per_page)){
             show_404($page = '', $log_error = TRUE);
             
         }else{
             
-            $data["jobs"] = $this->rest->get_jobs();
+            $data["jobs"] = $this->yarn_rest->get_jobs();
             $data["nb_jobs"] = $nb_jobs;
             $data["position"] = ($page*$per_page)-50;
             $data["per_page"] = $per_page;

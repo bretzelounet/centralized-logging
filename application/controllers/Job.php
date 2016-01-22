@@ -22,7 +22,7 @@ class Job extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('rest');
+        $this->load->library('yarn_rest');
         $this->load->library('logs');
         date_default_timezone_set('Europe/Paris');
     }
@@ -30,16 +30,17 @@ class Job extends CI_Controller {
 	public function index($job_id=NULL, $node_id=NULL, $cont_id=NULL)
 	{   
         if($job_id == NULL){
+            echo $job_id;
             show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
         }
         else{
             $this->load->view('header');
 
-            $data["job_infos"] = $this->rest->get_job_info($job_id);
+            $data["job_infos"] = $this->yarn_rest->get_job_info($job_id);
             
             if($node_id == NULL || $cont_id == NULL){
-                $data["job_attempts"] = $this->rest->get_job_attemps($job_id);
-                $data["tasks_attempts"] = $this->rest->get_tasks_attempts($job_id);
+                $data["job_attempts"] = $this->yarn_rest->get_job_attemps($job_id);
+                $data["tasks_attempts"] = $this->yarn_rest->get_tasks_attempts($job_id);
 
                 $this->load->view('job', $data);
             }else{
