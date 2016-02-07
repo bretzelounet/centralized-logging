@@ -185,3 +185,7 @@ table > tbody > tr:hover {
 .logs{
     font-size:13px;
 }
+
+#settings{
+    padding:10px 30px;
+}
