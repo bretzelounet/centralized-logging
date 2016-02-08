@@ -24,6 +24,7 @@ class Job extends CI_Controller {
         parent::__construct();
         $this->load->library('yarn_rest');
         $this->load->library('logs');
+        $this->load->model('settings_model');
         date_default_timezone_set('Europe/Paris');
     }
     
@@ -44,8 +45,8 @@ class Job extends CI_Controller {
 
                 $this->load->view('job', $data);
             }else{
-                
-                $data["job_attempt_logs"] = $this->logs->get_attempt_logs($job_id, $data["job_infos"]["user"], $node_id, $cont_id, "stdout");
+                $params = $this->settings_model->get_params();
+                $data["job_attempt_logs"] = $this->logs->get_attempt_logs($params["log_directory"], $job_id, $data["job_infos"]["user"], $node_id, $cont_id);
                 $this->load->view('job_logs', $data);
             }
             

@@ -1,0 +1,1 @@
+a:2:{s:14:"history_server";s:27:"http://109.232.232.41:19888";s:13:"log_directory";s:15:"/mapr/tmp/logs/";}

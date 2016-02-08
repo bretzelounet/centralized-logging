@@ -22,14 +22,22 @@ class Settings extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('settings_model');
         date_default_timezone_set('Europe/Paris');
     }
     
-	public function index()
+	public function index($set=FALSE)
 	{   
         $this->load->view('header');
         
-        $this->load->view('settings');
-        $this->load->view('footer');  
+        if($set){
+            $this->settings_model->save_params($this->input->post('history_server'), $this->input->post('log_directory'));
+        }
+        
+        $data['params'] = $this->settings_model->get_params();
+        
+        $this->load->view('settings', $data);
+        
+        $this->load->view('footer');
 	}
 }
