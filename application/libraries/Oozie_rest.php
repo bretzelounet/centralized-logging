@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Rest {
+class Oozie_rest {
 
         public function get_jobs()
         {
             $tmp = @file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs');
             
             if($tmp === FALSE){
-                show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
             }else{
                 $jobs_array = json_decode($tmp, true);
                 $jobs = array_reverse($jobs_array["jobs"]["job"]);
@@ -21,7 +21,7 @@ class Rest {
             $tmp = @file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs/'.$job_id);
             
             if($tmp === FALSE){
-                show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
             }else{
                 $jobs_array = json_decode($tmp, true);
                 $job_info = array_reverse($jobs_array["job"]);
@@ -34,7 +34,7 @@ class Rest {
             $tmp = @file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs/'.$job_id.'/jobattempts');
             
             if($tmp === FALSE){
-                show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
             }else{
                 $attempts_array = json_decode($tmp, true);
                 $attemps = array_reverse($attempts_array["jobAttempts"]["jobAttempt"]);
@@ -47,7 +47,7 @@ class Rest {
             $tmp = @file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs/'.$job_id.'/tasks');
             
             if($tmp === FALSE){
-                show_error("Rest API is not responding for this url", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
             }else{
                 $tasks_array = json_decode($tmp, true);
                 $tasks = array_reverse($tasks_array["tasks"]["task"]);

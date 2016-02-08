@@ -68,20 +68,20 @@
                         <div class="row">
                             <div class="col s12">
                                 <ul class="tabs">
-                                    <li class="tab col s3"><a class="active" href="#test1">stdout</a></li>
+                                    <li class="tab col s3"><a class="active" href="#test1">syslog</a></li>
                                     <li class="tab col s3"><a href="#test2">stderr</a></li>
-                                    <li class="tab col s3"><a href="#test3">syslog</a></li>
+                                    <li class="tab col s3"><a href="#test3">stdout</a></li>
                                 </ul>
                             </div>
                             <div class="tabs-content logs">
                                 <div style="height:58vh; overflow-y:scroll;" id="test1" class="col s12">
-                                    <?php echo nl2br($job_attempt_logs["stdout"]);?>
+                                    <?php echo nl2br($job_attempt_logs["syslog"]);?>
                                 </div>
                                 <div style="height:58vh; overflow-y:scroll;" id="test2" class="col s12">
                                     <?php echo nl2br($job_attempt_logs["stderr"]);?>
                                 </div>
                                 <div style="height:58vh; overflow-y:scroll;" id="test3" class="col s12">
-                                    <?php echo nl2br($job_attempt_logs["syslog"]);?>
+                                    <?php echo nl2br($job_attempt_logs["stdout"]);?>
                                 </div>
                             </div>
                         </div>

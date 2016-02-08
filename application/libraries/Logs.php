@@ -7,9 +7,10 @@ class Logs {
         {
             //$cmd = 'C:\"Program Files (x86)"\Gow\bin\cat.exe D:\test\logs\\'.$user.'\logs\\'.str_replace("job", "application", $job_id).'\\'.$node_id.'*';
             
-            $cmd = 'cat /mapr/tmp/logs/'.$user.'/logs/'.str_replace("job", "application", $job_id).'/'.$node_id.'*';
-            $content = shell_exec("sudo bash -c '".$cmd."'");
+            $job_path = '/mapr/tmp/logs/'.$user.'/logs/'.str_replace("job", "application", $job_id).'/'.$node_id.'*';
+            $content = shell_exec("sudo ./content.sh ".$job_path);
             return html_entity_decode($content);
+
         }
     
         public function get_attempt_logs($job_id, $user, $node_id, $cont_id){

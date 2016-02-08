@@ -13,7 +13,7 @@ Add the web server user in the sudoer file :
 
 * use the command  `visudo` 
 
-* and add the line : `apache ALL=NOPASSWD:/bin/bash`
+* and add the line : `apache ALL=(ALL) NOPASSWD: /var/www/html/centralized_logging/content.sh`
 
 
 ## Main stack
