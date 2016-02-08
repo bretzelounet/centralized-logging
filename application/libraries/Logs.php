@@ -3,20 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Logs {
 
-        public function get_log_content($job_id, $user, $node_id)
+        public function get_log_content($log_directory, $job_id, $user, $node_id)
         {
             //$cmd = 'C:\"Program Files (x86)"\Gow\bin\cat.exe D:\test\logs\\'.$user.'\logs\\'.str_replace("job", "application", $job_id).'\\'.$node_id.'*';
-            
-            $job_path = '/mapr/tmp/logs/'.$user.'/logs/'.str_replace("job", "application", $job_id).'/'.$node_id.'*';
+            $job_path = $log_directory.$user.'/logs/'.str_replace("job", "application", $job_id).'/'.$node_id.'*';
             $content = shell_exec("sudo ./content.sh ".$job_path);
             return html_entity_decode($content);
 
         }
     
-        public function get_attempt_logs($job_id, $user, $node_id, $cont_id){
+        public function get_attempt_logs($log_directory, $job_id, $user, $node_id, $cont_id){
             $logs=array();
             
-            $content = $this->get_log_content($job_id, $user, $node_id);
+            $content = $this->get_log_content($log_directory, $job_id, $user, $node_id);
             $attempt_logs = strstr($content, '&'.$cont_id);
             $attempt_logs = preg_replace('/\&'.$cont_id.'/', '', $attempt_logs, 1);
             $attempt_logs = $this->colorize($attempt_logs);
