@@ -15,7 +15,7 @@
                         ?>
                             <ul class="collection">
                                 <li class="collection-item">
-                                    <div><span class="main-content">ID</span><span class="secondary-content"><?php echo substr($job_infos["id"],0,20);?>
+                                    <div><span class="main-content">ID</span><span class="secondary-content"><?php echo $job_infos["id"];?>
                             </span>
                                     </div>
                                 </li>

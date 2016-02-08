@@ -5,7 +5,13 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/materialize.js"); ?>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('nav a[href^="' + location.href + '"]').addClass('active');
+    var path = location.pathname.split('/')[2];
+    if( path == "yarn" | path == "job"){
+        $('#nav-links #yarn_link').addClass('active');
+    }
+    else if(path == "settings"){
+        $('#nav-links #settings_link').addClass('active');
+    }
 });
 </script>
 </body>

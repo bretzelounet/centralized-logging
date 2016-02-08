@@ -16,10 +16,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="nav-wrapper container">
         <a href="#" class="brand-logo right"><i style="float:left;" class="material-icons">subject</i>CENTRALIZED <span style="color:#e67e22;">LOGGING</span></a>
         <ul id="nav-links">
-            <li><a href="<?php echo base_url("settings"); ?>"><i class="material-icons">settings</i></a></li>
-            <li><a href="<?php echo base_url("yarn"); ?>">YARN</a></li>
-            <li><a href="#">IMPALA</a></li>
-            <li><a href="#">OOZIE</a></li>
+            <li><a id="settings_link" href="<?php echo base_url("settings"); ?>"><i class="material-icons">settings</i></a></li>
+            <li><a id="yarn_link" href="<?php echo base_url("yarn"); ?>">YARN</a></li>
+            <li><a id="impala_link" href="#">IMPALA</a></li>
+            <li><a id="oozie_link" href="#">OOZIE</a></li>
         </ul>
     </div>
 </nav>
