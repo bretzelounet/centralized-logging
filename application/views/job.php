@@ -12,7 +12,6 @@
                         $end = new DateTime('@'.substr($job_infos["finishTime"],0,-3));
 			             $end->setTimezone(new DateTimeZone('Europe/Paris')); 
                         $duration = $start->diff($end);
-                        $duration->setTimezone(new DateTimeZone('Europe/Paris')); 
                         ?>
                             <ul class="collection">
                                 <li class="collection-item">
