@@ -15,7 +15,7 @@
                         ?>
                             <ul class="collection">
                                 <li class="collection-item">
-                                    <div><span class="main-content">NAME</span><span class="secondary-content"><?php echo substr($job_infos["name"],0,20);?>
+                                    <div><span class="main-content">ID</span><span class="secondary-content"><?php echo substr($job_infos["id"],0,20);?>
                             </span>
                                     </div>
                                 </li>
@@ -61,7 +61,7 @@
                         <nav id="breadcumb">
                             <div class="nav-wrapper">
                                 <a href="<?php echo base_url("yarn"); ?>" class="breadcrumb">All jobs</a>
-                                <a href="<?php echo base_url("job/index"); echo '/'.$job_infos["id"];?>" class="breadcrumb"><?php echo $job_infos["id"];?></a>
+                                <a href="<?php echo base_url("job/index"); echo '/'.$job_infos["id"];?>" class="breadcrumb"><?php echo $job_infos["name"];?></a>
                             </div>
                         </nav>
                         <div class="row">

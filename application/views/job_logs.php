@@ -15,7 +15,7 @@
                         ?>
                             <ul class="collection">
                                 <li class="collection-item">
-                                    <div><span class="main-content">NAME</span><span class="secondary-content"><?php echo substr($job_infos["name"],0,20);?>
+                                    <div><span class="main-content">ID</span><span class="secondary-content"><?php echo substr($job_infos["id"],0,20);?>
                             </span>
                                     </div>
                                 </li>
@@ -46,10 +46,10 @@
                                                 <div><span class="main-content">DURATION</span><span class="secondary-content"><?php echo $duration->format('%H:%M:%S');?></span></div>
                                             </li>
                                             <li class="collection-item">
-                                                <div><span class="main-content">MAPS</span> <span class="grey-text">Complete/Total</span><span class="secondary-content"><?php echo $job_infos["mapsCompleted"];?> / <?php echo$job_infos["mapsTotal"];?></span></div>
+                                                <div><span class="main-content">MAPS</span> <span class="grey-text">Complete/Total</span><span class="secondary-content"><?php echo $job_infos["mapsCompleted"];?> / <?php echo $job_infos["mapsTotal"];?></span></div>
                                             </li>
                                             <li class="collection-item">
-                                                <div><span class="main-content">REDUCES</span> <span class="grey-text">Complete/Total</span><span class="secondary-content"><?php echo $job_infos["reducesCompleted"];?> / <?php echo$job_infos["reducesTotal"];?></span></div>
+                                                <div><span class="main-content">REDUCES</span> <span class="grey-text">Complete/Total</span><span class="secondary-content"><?php echo $job_infos["reducesCompleted"];?> / <?php echo $job_infos["reducesTotal"];?></span></div>
                                             </li>
                             </ul>
                     </div>
@@ -61,7 +61,7 @@
                          <nav id="breadcumb">
                             <div class="nav-wrapper">
                                 <a href="<?php echo base_url("yarn"); ?>" class="breadcrumb">All jobs</a>
-                                <a href="<?php echo base_url("job/index"); echo '/'.$job_infos["id"];?>" class="breadcrumb"><?php echo $job_infos["id"];?></a>
+                                <a href="<?php echo base_url("job/index"); echo '/'.$job_infos["id"];?>" class="breadcrumb"><?php echo $job_infos["name"];?></a>
                                 <a href="#!" class="breadcrumb">logs</a>
                             </div>
                         </nav>
