@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a id="settings_link" href="<?php echo base_url("settings"); ?>"><i class="material-icons">settings</i></a></li>
             <li><a id="yarn_link" href="<?php echo base_url("yarn"); ?>">YARN</a></li>
             <li><a id="impala_link" href="#">IMPALA</a></li>
-            <li><a id="oozie_link" href="#">OOZIE</a></li>
+            <li><a id="oozie_link" href="<?php echo base_url("oozie"); ?>">OOZIE</a></li>
         </ul>
     </div>
 </nav>

@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Yarn_rest {
 
-        public function get_jobs()
+        public function get_jobs($rest_url)
         {
-            $tmp = @file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs');
+            $tmp = @file_get_contents($rest_url.'/ws/v1/history/mapreduce/jobs');
             
             if($tmp === FALSE){
                 show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
@@ -16,7 +16,7 @@ class Yarn_rest {
             }
         }
     
-        public function get_job_info($job_id)
+        public function get_job_info($rest_url, $job_id)
         {   
             $tmp = @file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs/'.$job_id);
             
@@ -29,9 +29,9 @@ class Yarn_rest {
             }
         }
     
-        public function get_job_attemps($job_id)
+        public function get_job_attemps($rest_url, $job_id)
         {   
-            $tmp = @file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs/'.$job_id.'/jobattempts');
+            $tmp = @file_get_contents($rest_url.'/ws/v1/history/mapreduce/jobs/'.$job_id.'/jobattempts');
             
             if($tmp === FALSE){
                 show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
@@ -42,9 +42,9 @@ class Yarn_rest {
             }
         }
     
-        public function get_tasks_attempts($job_id)
+        public function get_tasks_attempts($rest_url, $job_id)
         {
-            $tmp = @file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs/'.$job_id.'/tasks');
+            $tmp = @file_get_contents($rest_url.'/ws/v1/history/mapreduce/jobs/'.$job_id.'/tasks');
             
             if($tmp === FALSE){
                 show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
@@ -55,7 +55,7 @@ class Yarn_rest {
             
             $i = 0;
             foreach($tasks as $t){
-                $tasks_attempts[$i] = json_decode(file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs/'.$job_id.'/tasks/'.$t["id"].'/attempts'), true);
+                $tasks_attempts[$i] = json_decode(file_get_contents($rest_url.'/ws/v1/history/mapreduce/jobs/'.$job_id.'/tasks/'.$t["id"].'/attempts'), true);
                 $i++;
             }
             return $tasks_attempts;

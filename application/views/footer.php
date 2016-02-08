@@ -12,6 +12,9 @@ $(document).ready(function() {
     else if(path == "settings"){
         $('#nav-links #settings_link').addClass('active');
     }
+    else if(path == "oozie"){
+         $('#nav-links #oozie_link').addClass('active');
+    }
 
     if(location.pathname.split('/')[4]=="true"){
         Materialize.toast('Settings updated successfully !', 4000);

@@ -37,15 +37,15 @@ class Job extends CI_Controller {
         else{
             $this->load->view('header');
 
-            $data["job_infos"] = $this->yarn_rest->get_job_info($job_id);
+            $params = $this->settings_model->get_params();
+            $data["job_infos"] = $this->yarn_rest->get_job_info($params['history_server'], $job_id);
             
             if($node_id == NULL || $cont_id == NULL){
-                $data["job_attempts"] = $this->yarn_rest->get_job_attemps($job_id);
-                $data["tasks_attempts"] = $this->yarn_rest->get_tasks_attempts($job_id);
+                $data["job_attempts"] = $this->yarn_rest->get_job_attemps($params['history_server'], $job_id);
+                $data["tasks_attempts"] = $this->yarn_rest->get_tasks_attempts($params['history_server'], $job_id);
 
                 $this->load->view('job', $data);
             }else{
-                $params = $this->settings_model->get_params();
                 $data["job_attempt_logs"] = $this->logs->get_attempt_logs($params["log_directory"], $job_id, $data["job_infos"]["user"], $node_id, $cont_id);
                 $this->load->view('job_logs', $data);
             }

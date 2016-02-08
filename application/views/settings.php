@@ -11,7 +11,13 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input value="<?php echo $params["history_server"]; ?>" name="history_server" id="history_server" type="text" class="validate" required>
-                                        <label for="history_server">Job history server address</label>
+                                        <label for="history_server">Job history server address (http://ip:19888)</label>
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                    <div class="input-field col s12">
+                                        <input value="<?php echo $params["oozie_server"]; ?>" name="oozie_server" id="oozie_server" type="text" class="validate" required>
+                                        <label for="oozie_server">Oozie server address (http://ip:11000)</label>
                                     </div>
                                 </div>
                                 <div class="row">
