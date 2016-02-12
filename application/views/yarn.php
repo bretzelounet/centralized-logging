@@ -25,7 +25,7 @@
                 }
         for($i=$position ; $i < $coupure ; $i++)
         {
-    
+
         /* Time calculation */
         $start = new DateTime('@'.substr($jobs[$i]["startTime"],0,-3));
         $start->setTimezone(new DateTimeZone('Europe/Paris'));	
