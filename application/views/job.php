@@ -89,7 +89,7 @@
                                         $start_attempt = new DateTime('@'.substr($ja["startTime"],0,-3));
                                         $start_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
                                     ?>
-                                                <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $job_infos["id"];?>/<?php echo strstr($ja["nodeId"],":", TRUE);?>/<?php echo $ja["containerId"]; ?>';">
+                                                <tr onclick="document.location = '<?php echo base_url('job/index/'.$job_infos["id"]);?>/<?php echo strstr($ja["nodeId"],":", TRUE);?>/<?php echo $ja["containerId"]; ?>';">
                                                     <td>
                                                         <?php echo $ja["id"];?>
                                                     </td>
