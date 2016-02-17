@@ -136,7 +136,7 @@
 						$end_task_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
                                             $duration_task_attempt = $start_task_attempt->diff($end_task_attempt);
                                             ?>
-                                                <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $job_infos["id"];?>/<?php echo strstr($ta["nodeHttpAddress"],":", TRUE);?>/<?php echo $ta["assignedContainerId"]; ?>';">
+                                                <tr onclick="document.location = '<?php echo base_url('job/index/'.$job_infos["id"]);?>/<?php echo strstr($ta["nodeHttpAddress"],":", TRUE);?>/<?php echo $ta["assignedContainerId"]; ?>';">
                                                     <td>
                                                         <?php echo $ta["id"];?>
                                                     </td>
