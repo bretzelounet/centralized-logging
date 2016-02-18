@@ -33,6 +33,7 @@ class Yarn extends CI_Controller {
         /* number of jobs per page */
         $per_page = 50;
         $params = $this->settings_model->get_params();
+        $data["params"] = $params;
         $nb_jobs = count($this->yarn_rest->get_jobs($params["history_server"]));
         
         if($page <= 0 || $page > ceil($nb_jobs/$per_page)){

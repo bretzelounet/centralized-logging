@@ -8,7 +8,7 @@ class Yarn_rest {
             $tmp = @file_get_contents($rest_url.'/ws/v1/history/mapreduce/jobs');
             
             if($tmp === FALSE){
-                show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding (check the settings)", "2", $heading = 'An Error Was Encountered');
             }else{
                 $jobs_array = json_decode($tmp, true);
                 $jobs = array_reverse($jobs_array["jobs"]["job"]);
@@ -34,7 +34,7 @@ class Yarn_rest {
             $tmp = @file_get_contents($rest_url.'/ws/v1/history/mapreduce/jobs/'.$job_id.'/jobattempts');
             
             if($tmp === FALSE){
-                show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding (check the settings)", "2", $heading = 'An Error Was Encountered');
             }else{
                 $attempts_array = json_decode($tmp, true);
                 $attemps = array_reverse($attempts_array["jobAttempts"]["jobAttempt"]);
@@ -47,7 +47,7 @@ class Yarn_rest {
             $tmp = @file_get_contents($rest_url.'/ws/v1/history/mapreduce/jobs/'.$job_id.'/tasks');
             
             if($tmp === FALSE){
-                show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding (check the settings)", "2", $heading = 'An Error Was Encountered');
             }else{
                 $tasks_array = json_decode($tmp, true);
                 $tasks = array_reverse($tasks_array["tasks"]["task"]);
