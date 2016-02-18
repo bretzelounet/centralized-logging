@@ -31,7 +31,7 @@ class Settings extends CI_Controller {
         $this->load->view('header');
         
         if($set){
-            $this->settings_model->save_params($this->input->post('history_server'), $this->input->post('oozie_server'), $this->input->post('log_directory'));
+            $this->settings_model->save_params($this->input->post('history_server'), $this->input->post('oozie_server'),$this->input->post('spark_server'), $this->input->post('log_directory'));
         }
         
         $data['params'] = $this->settings_model->get_params();

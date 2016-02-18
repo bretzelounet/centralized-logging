@@ -10,9 +10,9 @@ class Settings_model extends CI_Model {
             $this->file = 'params.txt';
         }
 
-        public function save_params($history_server, $oozie_server, $log_directory)
+        public function save_params($history_server, $oozie_server, $spark_server ,$log_directory)
         {
-            $array = array('history_server'=>$history_server,'oozie_server'=>$oozie_server,'log_directory'=>$log_directory);
+            $array = array('history_server'=>$history_server,'oozie_server'=>$oozie_server,'spark_server'=>$spark_server,'log_directory'=>$log_directory);
             $serializedData = serialize($array);
             file_put_contents($this->file, $serializedData);
         }

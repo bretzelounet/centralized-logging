@@ -1,7 +1,9 @@
 <div class="section">
     <div class="container">
         <div class="row">
-            <div class="col s4 m4 l4"><p></p></div>
+            <div class="col s4 m4 l4">
+                <p></p>
+            </div>
             <div class="col s4 m4 l4">
                 <div class="card">
                     <div class="card-header"><span class="card-title">Settings</span></div>
@@ -14,7 +16,13 @@
                                         <label for="history_server">Job history server address (http://ip:19888)</label>
                                     </div>
                                 </div>
-                                 <div class="row">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input value="" name="spark_server" id="spark_server" type="text" class="validate" required>
+                                        <label for="spark_server">Spark server address (http://ip:11000)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="input-field col s12">
                                         <input value="<?php echo $params["oozie_server"]; ?>" name="oozie_server" id="oozie_server" type="text" class="validate" required>
                                         <label for="oozie_server">Oozie server address (http://ip:11000)</label>
