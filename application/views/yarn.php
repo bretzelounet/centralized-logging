@@ -59,7 +59,15 @@
             ?>
                                 <td><span class="label green"><?php echo $jobs[$i]["state"]; ?></span></td>
                                 <?php
-            }else{
+            }else if($jobs[$i]["state"]=="RUNNING"){
+            ?>
+                                    <td><span class="label blue"><?php echo $jobs[$i]["state"]; ?></span></td>
+                                    <?php
+             }else if($jobs[$i]["state"]=="KILLED"){
+            ?>
+                                    <td><span class="label orange"><?php echo $jobs[$i]["state"]; ?></span></td>
+                                    <?php
+             }else{
             ?>
                                     <td><span class="label red"><?php echo $jobs[$i]["state"]; ?></span></td>
                                     <?php

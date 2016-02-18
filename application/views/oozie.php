@@ -33,7 +33,7 @@
         $duration = $start->diff($end);
         
         ?><a href="#">
-                        <tr onclick="document.location = '/centralized_logging/job/index/<?php echo $wkfs[$i]["id"];?>';">
+                        <tr onclick="document.location = '<?php echo base_url("job/index"); ?>';">
                             <td>
                                 <?php echo $wkfs[$i]["id"]; ?>
                             </td>
@@ -57,7 +57,15 @@
             ?>
                                 <td><span class="label green"><?php echo $wkfs[$i]["status"]; ?></span></td>
                                 <?php
-            }else{
+            }else if($wkfs[$i]["status"]=="RUNNING"){
+            ?>
+                                    <td><span class="label blue"><?php echo $wkfs[$i]["status"]; ?></span></td>
+                                    <?php
+             }else if($wkfs[$i]["status"]=="KILLED"){
+            ?>
+                                    <td><span class="label orange"><?php echo $wkfs[$i]["status"]; ?></span></td>
+                                    <?php
+             }else{
             ?>
                                     <td><span class="label red"><?php echo $wkfs[$i]["status"]; ?></span></td>
                                     <?php
