@@ -28,6 +28,18 @@
                                         <div><span class="main-content">STATUS</span><span class="secondary-content green-text"><?php echo $job_infos["state"];?></span></div>
                                     </li>
                                     <?php
+                                }else if($job_infos["state"]=="KILLED"){
+                                ?>
+                                        <li class="collection-item">
+                                            <div><span class="main-content">STATUS</span><span class="secondary-content orange-text"><?php echo $job_infos["state"];?></span></div>
+                                        </li>
+                                <?php
+                                }else if($job_infos["state"]=="RUNNING"){
+                                ?>
+                                        <li class="collection-item">
+                                            <div><span class="main-content">STATUS</span><span class="secondary-content blue-text"><?php echo $job_infos["state"];?></span></div>
+                                        </li>
+                                <?php
                                 }else{
                                 ?>
                                         <li class="collection-item">
@@ -130,10 +142,13 @@
                                         foreach($tasks["taskAttempts"]["taskAttempt"] as $ta){
                                             
                                             /* Time calculation */
+                                            if($ta["finishTime"]==-1){
+                                                $ta["finishTime"]=$ta["startTime"];
+                                            }
                                             $start_task_attempt = new DateTime('@'.substr($ta["startTime"],0,-3));
-						$start_task_attempt->setTimezone(new DateTimeZone('Europe/Paris')); 	
+						                  $start_task_attempt->setTimezone(new DateTimeZone('Europe/Paris')); 	
                                             $end_task_attempt = new DateTime('@'.substr($ta["finishTime"],0,-3));
-						$end_task_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
+						                  $end_task_attempt->setTimezone(new DateTimeZone('Europe/Paris'));
                                             $duration_task_attempt = $start_task_attempt->diff($end_task_attempt);
                                             ?>
                                                 <tr onclick="document.location = '<?php echo base_url('job/index/'.$job_infos["id"]);?>/<?php echo strstr($ta["nodeHttpAddress"],":", TRUE);?>/<?php echo $ta["assignedContainerId"]; ?>';">

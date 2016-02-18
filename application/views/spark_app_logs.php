@@ -3,47 +3,35 @@
         <div class="row">
             <div class="col s6 m3 l2">
                 <div class="card">
-                    <div class="card-header"><span class="card-title">Job overview</span></div>
+                    <div class="card-header"><span class="card-title">Application overview</span></div>
                     <div class="card-content">
                         <?php
                         /* Time calculation */
-                        $start = new DateTime('@'.substr($job_infos["startTime"],0,-3));	
-                        $start->setTimezone(new DateTimeZone('Europe/Paris'));
-                        $end = new DateTime('@'.substr($job_infos["finishTime"],0,-3));
+                        $start = new DateTime($app_infos["attempts"][0]["startTime"]);
+                        $start->setTimezone(new DateTimeZone('Europe/Paris'));	
+                        $end = new DateTime($app_infos["attempts"][0]["endTime"]);
                         $end->setTimezone(new DateTimeZone('Europe/Paris'));
                         $duration = $start->diff($end);
                         ?>
                             <ul class="collection">
                                 <li class="collection-item">
-                                    <div><span class="main-content">ID</span><span class="secondary-content"><?php echo $job_infos["id"];?>
+                                    <div><span class="main-content">ID</span><span class="secondary-content"><?php echo substr($app_infos["id"],12);?>
                             </span>
                                     </div>
                                 </li>
                                 <li class="collection-item">
-                                    <div><span class="main-content">USER</span><span class="secondary-content"><?php echo $job_infos["user"];?></span></div>
+                                    <div><span class="main-content">USER</span><span class="secondary-content"><?php echo $app_infos["attempts"][0]["sparkUser"];?></span></div>
                                 </li>
-                               <?php if($job_infos["state"]=="SUCCEEDED"){
+                                <?php if($app_infos["attempts"][0]["completed"]){
                                 ?>
                                     <li class="collection-item">
-                                        <div><span class="main-content">STATUS</span><span class="secondary-content green-text"><?php echo $job_infos["state"];?></span></div>
+                                        <div><span class="main-content">STATUS</span><span class="secondary-content green-text">SUCCEDEED</span></div>
                                     </li>
                                     <?php
-                                }else if($job_infos["state"]=="KILLED"){
-                                ?>
-                                        <li class="collection-item">
-                                            <div><span class="main-content">STATUS</span><span class="secondary-content orange-text"><?php echo $job_infos["state"];?></span></div>
-                                        </li>
-                                <?php
-                                }else if($job_infos["state"]=="RUNNING"){
-                                ?>
-                                        <li class="collection-item">
-                                            <div><span class="main-content">STATUS</span><span class="secondary-content blue-text"><?php echo $job_infos["state"];?></span></div>
-                                        </li>
-                                <?php
                                 }else{
                                 ?>
                                         <li class="collection-item">
-                                            <div><span class="main-content">STATUS</span><span class="secondary-content red-text"><?php echo $job_infos["state"];?></span></div>
+                                            <div><span class="main-content">STATUS</span><span class="secondary-content red-text">FAILED</span></div>
                                         </li>
                                         <?php
                                 }
@@ -55,13 +43,7 @@
                                                 <div><span class="main-content">FINISHED</span><span class="secondary-content"><?php echo $end->format('d/m/y H:i:s');?></span></div>
                                             </li>
                                             <li class="collection-item">
-                                                <div><span class="main-content">DURATION</span><span class="secondary-content"><?php echo $duration->format('%H:%M:%S');?></span></div>
-                                            </li>
-                                            <li class="collection-item">
-                                                <div><span class="main-content">MAPS</span> <span class="grey-text">Complete/Total</span><span class="secondary-content"><?php echo $job_infos["mapsCompleted"];?> / <?php echo $job_infos["mapsTotal"];?></span></div>
-                                            </li>
-                                            <li class="collection-item">
-                                                <div><span class="main-content">REDUCES</span> <span class="grey-text">Complete/Total</span><span class="secondary-content"><?php echo $job_infos["reducesCompleted"];?> / <?php echo $job_infos["reducesTotal"];?></span></div>
+                                                <div><span class="main-content">DURATION</span><span class="secondary-content"><?php echo $duration->format('%H:%I:%S');?></span></div>
                                             </li>
                             </ul>
                     </div>
@@ -72,8 +54,8 @@
                     <div class="card-content">
                          <nav id="breadcumb">
                             <div class="nav-wrapper">
-                                <a href="<?php echo base_url("yarn"); ?>" class="breadcrumb">All jobs</a>
-                                <a href="<?php echo base_url("job/index"); echo '/'.$job_infos["id"];?>" class="breadcrumb"><?php echo $job_infos["name"];?></a>
+                                <a href="<?php echo base_url("spark"); ?>" class="breadcrumb">All jobs</a>
+                                <a href="<?php echo base_url("spark_app/index"); echo '/'.$app_infos["id"];?>" class="breadcrumb"><?php echo $app_infos["name"];?></a>
                                 <a href="#!" class="breadcrumb">logs</a>
                             </div>
                         </nav>
@@ -87,13 +69,13 @@
                             </div>
                             <div class="tabs-content logs">
                                 <div style="height:58vh; overflow-y:scroll;" id="test1" class="col s12">
-                                    <?php echo nl2br($job_attempt_logs["syslog"]);?>
+                                    <?php echo nl2br($app_logs["syslog"]);?>
                                 </div>
                                 <div style="height:58vh; overflow-y:scroll;" id="test2" class="col s12">
-                                    <?php echo nl2br($job_attempt_logs["stderr"]);?>
+                                    <?php echo nl2br($app_logs["stderr"]);?>
                                 </div>
                                 <div style="height:58vh; overflow-y:scroll;" id="test3" class="col s12">
-                                    <?php echo nl2br($job_attempt_logs["stdout"]);?>
+                                    <?php echo nl2br($app_logs["stdout"]);?>
                                 </div>
                             </div>
                         </div>

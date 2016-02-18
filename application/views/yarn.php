@@ -32,7 +32,6 @@
         $end = new DateTime('@'.substr($jobs[$i]["finishTime"],0,-3));
         $end->setTimezone(new DateTimeZone('Europe/Paris'));
         $duration = $start->diff($end);
-           
         ?><a href="#">
                         <tr onclick="document.location = '<?php echo base_url('job/index/'.$jobs[$i]["id"]);?>';">
                             <td>

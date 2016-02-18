@@ -18,7 +18,7 @@ class Yarn_rest {
     
         public function get_job_info($rest_url, $job_id)
         {   
-            $tmp = @file_get_contents('http://109.232.232.41:19888/ws/v1/history/mapreduce/jobs/'.$job_id);
+            $tmp = @file_get_contents($rest_url.'/ws/v1/history/mapreduce/jobs/'.$job_id);
             
             if($tmp === FALSE){
                 show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');

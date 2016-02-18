@@ -9,7 +9,6 @@
                         <th data-field="id">Job ID</th>
                         <th data-field="user">User</th>
                         <th data-field="name">Name</th>
-                        <th data-field="queue">Queue</th>
                         <th data-field="started">Started</th>
                         <th data-field="finished">Finished</th>
                         <th data-field="duration">Duration</th>
@@ -20,31 +19,28 @@
                 <tbody>
                     <?php 
                 $coupure = $position + $per_page;
-                if($coupure > $nb_jobs){
-                    $coupure = $nb_jobs;
+                if($coupure > $nb_apps){
+                    $coupure = $nb_apps;
                 }
         for($i=$position ; $i < $coupure ; $i++)
         {
 
         /* Time calculation */
-        $start = new DateTime('@'.substr($jobs[$i]["startTime"],0,-3));
+        $start = new DateTime($apps[$i]["attempts"][0]["startTime"]);
         $start->setTimezone(new DateTimeZone('Europe/Paris'));	
-        $end = new DateTime('@'.substr($jobs[$i]["finishTime"],0,-3));
+        $end = new DateTime($apps[$i]["attempts"][0]["endTime"]);
         $end->setTimezone(new DateTimeZone('Europe/Paris'));
         $duration = $start->diff($end);
         ?><a href="#">
-                        <tr onclick="document.location = '<?php echo base_url('job/index/'.$jobs[$i]["id"]);?>';">
+                        <tr onclick="document.location = '<?php echo base_url('spark_app/index/'.$apps[$i]["id"]);?>';">
                             <td>
-                                <?php echo substr($jobs[$i]["id"],4); ?>
+                                <?php echo $apps[$i]["id"]; ?>
                             </td>
                             <td>
-                                <?php echo $jobs[$i]["user"]; ?>
+                                <?php echo $apps[$i]["attempts"][0]["sparkUser"]; ?>
                             </td>
                             <td>
-                                <?php echo $jobs[$i]["name"]; ?>
-                            </td>
-                            <td>
-                                <?php echo $jobs[$i]["queue"]; ?>
+                                <?php echo $apps[$i]["name"]; ?>
                             </td>
                             <td>
                                 <?php echo $start->format('D H:i:s'); ?>
@@ -55,21 +51,13 @@
                             <td>
                                 <?php echo $duration->format('%H:%I:%S'); ?>
                             </td>
-                            <?php if($jobs[$i]["state"]=="SUCCEEDED"){
+                            <?php if($apps[$i]["attempts"][0]["completed"]){
             ?>
-                                <td><span class="label green"><?php echo $jobs[$i]["state"]; ?></span></td>
+                                <td><span class="label green">SUCCEEDED</span></td>
                                 <?php
-            }else if($jobs[$i]["state"]=="RUNNING"){
-            ?>
-                                    <td><span class="label blue"><?php echo $jobs[$i]["state"]; ?></span></td>
-                                    <?php
-             }else if($jobs[$i]["state"]=="KILLED"){
-            ?>
-                                    <td><span class="label orange"><?php echo $jobs[$i]["state"]; ?></span></td>
-                                    <?php
              }else{
             ?>
-                                    <td><span class="label red"><?php echo $jobs[$i]["state"]; ?></span></td>
+                                    <td><span class="label red">FAILED</span></td>
                                     <?php
             }
             ?>
@@ -84,6 +72,6 @@
             <?php echo $pagination;?>
         </ul>
         </div>
-        <div class="showing right-align">Showing <?php echo $position+1;?> to <?php echo $coupure;?> of <?php echo $nb_jobs;?> entries</div>
+        <div class="showing right-align">Showing <?php echo $position+1;?> to <?php echo $coupure;?> of <?php echo $nb_apps;?> entries</div>
     </div>
 </div>

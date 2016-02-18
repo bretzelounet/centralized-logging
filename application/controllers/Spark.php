@@ -33,21 +33,21 @@ class Spark extends CI_Controller {
         /* number of jobs per page */
         $per_page = 50;
         $params = $this->settings_model->get_params();
-        $nb_jobs = count($this->spark_rest->get_jobs($params["spark_server"]));
+        $nb_apps = count($this->spark_rest->get_apps($params["spark_server"]));
         
-        if($page <= 0 || $page > ceil($nb_jobs/$per_page)){
+        if($page <= 0 || $page > ceil($nb_apps/$per_page)){
             show_404($page = '', $log_error = TRUE);
             
         }else{
             
-            $data["jobs"] = $this->spark_rest->get_jobs($params["spark_server"]);
-            $data["nb_jobs"] = $nb_jobs;
+            $data["apps"] = $this->spark_rest->get_apps($params["spark_server"]);
+            $data["nb_apps"] = $nb_apps;
             $data["position"] = ($page*$per_page)-50;
             $data["per_page"] = $per_page;
 
             /* pagination configuration */
             $config['base_url'] = base_url("/yarn/index");;
-            $config['total_rows'] = $nb_jobs;
+            $config['total_rows'] = $nb_apps;
             $config['per_page'] = $per_page;
             $config['use_page_numbers'] = TRUE;
             $config['cur_tag_open'] = '<li class="active">';
@@ -75,7 +75,7 @@ class Spark extends CI_Controller {
             $data["pagination"] = $this->pagination->create_links();
 
             $this->load->view('header');
-            $this->load->view('yarn', $data);
+            $this->load->view('spark', $data);
             $this->load->view('footer');
             
         }
