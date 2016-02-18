@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input value="" name="spark_server" id="spark_server" type="text" class="validate" required>
+                                        <input value="<?php echo $params["spark_server"]; ?>" name="spark_server" id="spark_server" type="text" class="validate" required>
                                         <label for="spark_server">Spark server address (http://ip:11000)</label>
                                     </div>
                                 </div>
