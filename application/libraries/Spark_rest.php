@@ -5,10 +5,10 @@ class Spark_rest {
 
         public function get_jobs($rest_url)
         {
-            $tmp = @file_get_contents($rest_url.'/ws/v1/history/mapreduce/jobs');
+            $tmp = @file_get_contents($rest_url.'/api/v1');
             
             if($tmp === FALSE){
-                show_error("Rest API is not responding (check the settings)", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding (check the settingsdsfdfdsfsds)", "2", $heading = 'An Error Was Encountered');
             }else{
                 $jobs_array = json_decode($tmp, true);
                 $jobs = array_reverse($jobs_array["jobs"]["job"]);

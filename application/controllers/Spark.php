@@ -23,7 +23,7 @@ class Spark extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('pagination');
-        $this->load->library('yarn_rest');
+        $this->load->library('spark_rest');
         $this->load->model('settings_model');
         date_default_timezone_set('Europe/Paris');
     }
@@ -33,14 +33,14 @@ class Spark extends CI_Controller {
         /* number of jobs per page */
         $per_page = 50;
         $params = $this->settings_model->get_params();
-        $nb_jobs = count($this->yarn_rest->get_jobs($params["history_server"]));
+        $nb_jobs = count($this->spark_rest->get_jobs($params["spark_server"]));
         
         if($page <= 0 || $page > ceil($nb_jobs/$per_page)){
             show_404($page = '', $log_error = TRUE);
             
         }else{
             
-            $data["jobs"] = $this->yarn_rest->get_jobs($params["history_server"]);
+            $data["jobs"] = $this->spark_rest->get_jobs($params["spark_server"]);
             $data["nb_jobs"] = $nb_jobs;
             $data["position"] = ($page*$per_page)-50;
             $data["per_page"] = $per_page;
