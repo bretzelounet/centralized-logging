@@ -18,7 +18,9 @@ $(document).ready(function() {
     else if(path == "impala"){
          $('#nav-links #impala_link').addClass('active');
     }
-
+    else if(path == "spark"){
+         $('#nav-links #spark_link').addClass('active');
+    }
     if(location.pathname.split('/')[4]=="true"){
         Materialize.toast('Settings updated successfully !', 4000);
     }
