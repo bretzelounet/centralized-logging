@@ -85,8 +85,10 @@
                                             <?php
                                             
                                     foreach($app_executors as $ae){
+                                        $node = explode('/',$ae["executorLogs"]["stdout"]);
+                                        $cont = explode('/',$ae["executorLogs"]["stdout"]);
                                     ?>
-                                                <tr onclick="document.location = '<?php echo base_url('spark_app/index/'.$app_infos["id"]);?>/<?php echo strstr($ae["hostPort"],":", TRUE);?>/<?php echo explode('/',$ae["executorLogs"]["stdout"])[5];?>';">
+                                                <tr onclick="document.location = '<?php echo base_url('spark_app/index/'.$app_infos["id"]);?>/<?php echo substr($node[2],0,-5);?>/<?php echo $cont[5];?>';">
                                                     <td>
                                                         <?php echo $ae["id"];?>
                                                     </td>

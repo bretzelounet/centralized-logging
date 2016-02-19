@@ -45,7 +45,7 @@ class Spark_app extends CI_Controller {
 
                 $this->load->view('spark_app', $data);
             }else{
-                $data["app_logs"] = $this->logs->get_attempt_logs($params["log_directory"], $app_id, $data["app_infos"]["attempts"][0]["sparkUser"], $node_id, $cont_id);
+                $data["app_logs"] = $this->logs->get_spark_logs($params["log_directory"], $app_id, $data["app_infos"]["attempts"][0]["sparkUser"], $node_id, $cont_id);
                 $this->load->view('spark_app_logs', $data);
             }
             

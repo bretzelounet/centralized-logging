@@ -18,7 +18,7 @@ $(document).ready(function() {
     else if(path == "impala"){
          $('#nav-links #impala_link').addClass('active');
     }
-    else if(path == "spark"){
+    else if(path == "spark" | path == "spark_app"){
          $('#nav-links #spark_link').addClass('active');
     }
     if(location.pathname.split('/')[4]=="true"){

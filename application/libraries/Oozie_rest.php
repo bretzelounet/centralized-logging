@@ -8,7 +8,7 @@ class Oozie_rest {
             $tmp = @file_get_contents($rest_url.'/oozie/v1/jobs?jobtype=wf&len=200');
                         
             if($tmp === FALSE){
-                show_error("Rest API is not responding (check the settings)", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
             }else{
                 $jobs_array = json_decode($tmp, true);
                 $jobs = $jobs_array["workflows"];

@@ -8,7 +8,7 @@ class Spark_rest {
             $tmp = @file_get_contents($rest_url.'/api/v1/applications');
             
             if($tmp === FALSE){
-                show_error("Rest API is not responding (check the settings)", "2", $heading = 'An Error Was Encountered');
+                show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');
             }else{
                 $apps = json_decode($tmp, true);
                 return $apps;
