@@ -85,8 +85,10 @@
                                             <?php
                                             
                                     foreach($app_executors as $ae){
-                                        $node = explode('/',$ae["executorLogs"]["stdout"]);
-                                        $cont = explode('/',$ae["executorLogs"]["stdout"]);
+                                        if($ae["executorLogs"] != null){
+                                            $node = explode('/',$ae["executorLogs"]["stdout"]);
+                                            $cont = explode('/',$ae["executorLogs"]["stdout"]);
+                                        
                                     ?>
                                                 <tr onclick="document.location = '<?php echo base_url('spark_app/index/'.$app_infos["id"]);?>/<?php echo substr($node[2],0,-5);?>/<?php echo $cont[5];?>';">
                                                     <td>
@@ -137,6 +139,59 @@
                                                     </td>
                                                 </tr>
                                                 <?php }
+                                        else{
+                                            ?>
+                                                    <tr onclick="Materialize.toast('Logs cannot be shown for local jobs or spark-shell drivers', 4000)">
+                                                    <td>
+                                                        <?php echo $ae["id"];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["hostPort"];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["rddBlocks"];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo round(intval($ae["memoryUsed"])/1024/1024,2);?>/
+                                                        <?php echo round(intval($ae["maxMemory"])/1024/1024,2);?>
+                                                        MB
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["diskUsed"];?>
+                                                        B
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["activeTasks"];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["failedTasks"];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["completedTasks"];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["totalTasks"];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["totalDuration"];?>
+                                                        ms
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["totalInputBytes"];?>
+                                                        B
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["totalShuffleRead"];?>
+                                                        B
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $ae["totalShuffleWrite"];?>
+                                                        B
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                        }
+                                    }
                                             ?>
                                         </tbody>
                                     </table>

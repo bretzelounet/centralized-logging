@@ -27,9 +27,14 @@ class Spark_rest {
             }
         }
     
-        public function get_app_executors($rest_url, $app_id)
+        public function get_app_executors($rest_url, $app_id, $app_name)
         {   
-            $tmp = @file_get_contents($rest_url.'/api/v1/applications/'.$app_id.'/1/executors');
+            if($app_name=="Spark shell" | substr($app_id,0,5)=="local"){
+                $tmp = @file_get_contents($rest_url.'/api/v1/applications/'.$app_id.'/executors');
+            }
+            else{
+                $tmp = @file_get_contents($rest_url.'/api/v1/applications/'.$app_id.'/1/executors');
+            }
             
             if($tmp === FALSE){
                 show_error("Rest API is not responding", "2", $heading = 'An Error Was Encountered');

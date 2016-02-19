@@ -37,8 +37,8 @@ class Spark_app extends CI_Controller {
             $this->load->view('header');
 
             $params = $this->settings_model->get_params();
-            $data["app_executors"] = $this->spark_rest->get_app_executors($params['spark_server'], $app_id);
             $data["app_infos"] = $this->spark_rest->get_app_infos($params['spark_server'], $app_id);
+            $data["app_executors"] = $this->spark_rest->get_app_executors($params['spark_server'], $app_id, $data["app_infos"]["name"]);
             
             if($node_id == NULL || $cont_id == NULL){
 
