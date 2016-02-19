@@ -1,1 +1,1 @@
-a:4:{s:14:"history_server";s:27:"http://localhost:19888";s:12:"oozie_server";s:27:"http://localhost:11000";s:12:"spark_server";s:27:"http://localhost:18080";s:13:"log_directory";s:14:"/mapr/tmp/logs/";}
+a:4:{s:14:"history_server";s:27:"http://109.232.232.41:19888";s:12:"oozie_server";s:27:"http://109.232.232.41:11000";s:12:"spark_server";s:27:"http://109.232.232.41:18080";s:13:"log_directory";s:14:"/mapr/tmp/logs/";}
